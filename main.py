@@ -76,6 +76,18 @@ class MainWindow(QMainWindow):
 if __name__ == '__main__':
     # Create the Qt Application
 
+    server = 'NB-DK-DELL\SQLEXPRESS' 
+    database = 'AdventureWorks2019' 
+    cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';Trusted_Connection=yes;')
+    cursor = cnxn.cursor()
+
+    #Sample select query
+    cursor.execute("SELECT * FROM Production.Product;") 
+    row = cursor.fetchone() 
+    while row: 
+        print(row[0])
+        row = cursor.fetchone()
+
     app = QApplication(sys.argv)
 
     mainWindow = MainWindow()
