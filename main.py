@@ -6,6 +6,7 @@ from PySide6.QtCore import *
 import sys
 from mainwindow import Ui_MainWindow
 from uifunctions import *
+import pyodbc
 
 
 class MainWindow(QMainWindow):
@@ -80,5 +81,6 @@ if __name__ == '__main__':
     mainWindow = MainWindow()
 
     mainWindow.show()
+
 
     sys.exit(app.exec_())
