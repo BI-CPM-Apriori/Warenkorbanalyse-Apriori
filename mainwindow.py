@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1215, 741)
+        MainWindow.resize(1355, 846)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -379,16 +379,69 @@ class Ui_MainWindow(object):
         self.dashboard.setObjectName(u"dashboard")
         self.verticalLayout_6 = QVBoxLayout(self.dashboard)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.label_2 = QLabel(self.dashboard)
+        self.frame_4 = QFrame(self.dashboard)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setFrameShape(QFrame.NoFrame)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_9 = QVBoxLayout(self.frame_4)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.frame_5 = QFrame(self.frame_4)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setMinimumSize(QSize(0, 150))
+        self.frame_5.setMaximumSize(QSize(16777215, 200))
+        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_10 = QVBoxLayout(self.frame_5)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.label_2 = QLabel(self.frame_5)
         self.label_2.setObjectName(u"label_2")
         font2 = QFont()
-        font2.setFamilies([u"Bahnschrift"])
-        font2.setPointSize(28)
-        font2.setBold(True)
+        font2.setFamilies([u"Bahnschrift Light"])
+        font2.setPointSize(36)
         self.label_2.setFont(font2)
         self.label_2.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_6.addWidget(self.label_2)
+        self.verticalLayout_10.addWidget(self.label_2)
+
+
+        self.verticalLayout_9.addWidget(self.frame_5)
+
+        self.frame_6 = QFrame(self.frame_4)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_11 = QVBoxLayout(self.frame_6)
+        self.verticalLayout_11.setSpacing(0)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.scrollArea = QScrollArea(self.frame_6)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setStyleSheet(u"border:0px solid black;")
+        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1239, 598))
+        sizePolicy.setHeightForWidth(self.scrollAreaWidgetContents.sizePolicy().hasHeightForWidth())
+        self.scrollAreaWidgetContents.setSizePolicy(sizePolicy)
+        self.verticalLayout_12 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.results = QVBoxLayout()
+        self.results.setObjectName(u"results")
+
+        self.verticalLayout_12.addLayout(self.results)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.verticalLayout_11.addWidget(self.scrollArea)
+
+
+        self.verticalLayout_9.addWidget(self.frame_6)
+
+
+        self.verticalLayout_6.addWidget(self.frame_4)
 
         self.stackedWidget.addWidget(self.dashboard)
         self.analyse = QWidget()
@@ -397,7 +450,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.label_3 = QLabel(self.analyse)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font2)
+        font3 = QFont()
+        font3.setFamilies([u"Bahnschrift"])
+        font3.setPointSize(28)
+        font3.setBold(True)
+        self.label_3.setFont(font3)
         self.label_3.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_7.addWidget(self.label_3)
@@ -434,7 +491,7 @@ class Ui_MainWindow(object):
         self.btnDashboard.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.btnSettings.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.btnHelp.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Dashboard", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Analyse", None))
     # retranslateUi
 
