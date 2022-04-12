@@ -4,12 +4,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFo
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 import sys
+
+from numpy import DataSource
 from mainwindow import Ui_MainWindow
 from uifunctions import *
-import pyodbc
-import pandas as pd
-from mlxtend.frequent_patterns import association_rules, apriori
-from mlxtend.preprocessing import TransactionEncoder
+import dataset
+import apriori
 
 
 class MainWindow(QMainWindow):
@@ -77,45 +77,13 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == '__main__':
-    # Create the Qt Application
-    dataset = []
-    products = []
 
-    server_name = 'NB-DK-DELL\SQLEXPRESS' 
-    db_name = 'AdventureWorks2019' 
-    connection_str =  'Driver={SQL Server};' + 'Server=' + server_name + ";Database=" + db_name + ";Trusted_Connection=yes;"
-    conn = pyodbc.connect(connection_str)
-    cursor = conn.cursor()
-
-    #Sample select query
-    cursor.execute("SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[Product].[Name] FROM [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] ORDER BY [SalesOrderID] ASC;") 
-    row = cursor.fetchone()
-    lastID = row[0]
-    while row: 
-        if lastID == row[0]:
-            products.append(row[1])
-        else:
-            dataset.append(products)
-            products = []
-            products.append(row[1])
-        print("x")
-        lastID = row[0]
-        row = cursor.fetchone()
-
-    te = TransactionEncoder()
-    te_ary = te.fit(dataset).transform(dataset)
-    df = pd.DataFrame(te_ary, columns=te.columns_)
+    # Parameter 
+    # 1 = Produkte, 2 = Kategorien
+    ds = dataset.createDataset("1")
     
-    frequent_itemsets = apriori(df,min_support=0.025,use_colnames=True)
-    frequent_itemsets.sort_values('support',ascending=False)
-    rules = association_rules(frequent_itemsets,metric='lift',min_threshold=10)
-    rules.sort_values('lift',ascending=False)
 
-    result = rules[['antecedents','consequents','support','confidence','lift']]
-
-    result.sort_values('confidence',ascending=False)
-
-    print(result)
+    print(apriori.getResult(ds))
 
     app = QApplication(sys.argv)
 
