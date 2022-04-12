@@ -76,10 +76,11 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
 
-    # Parameter 
+    # Param 
     # 1 = Produkte, 2 = Kategorien
-    ds = dataset.createDataset("1")
-    print(apriori.getResult(ds))
+    param = "1"
+    ds = dataset.createDataset(param)
+    print(apriori.getResult(ds, param))
 
     app = QApplication(sys.argv)
     mainWindow = MainWindow()

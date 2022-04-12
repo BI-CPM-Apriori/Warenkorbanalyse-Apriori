@@ -1,15 +1,15 @@
 from Database import dbConnection, read
 
-def createDataset(x):
+def createDataset(param):
     dataset = []
     innerList = []
 
     conn = dbConnection.openConn()
     cursor = conn.cursor()
 
-    if x == "1":
+    if param == "1":
         sql = read.getProducts()
-    elif x == "2":
+    elif param == "2":
         sql = read.getCategories()
 
     cursor.execute(sql) 
