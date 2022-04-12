@@ -16,11 +16,11 @@ def getResult(ds, param):
 
     frequent_itemsets = apriori(df,min_support=supp,use_colnames=True)
     frequent_itemsets.sort_values('support',ascending=False)
+
     rules = association_rules(frequent_itemsets,metric='lift',min_threshold=threshold)
     rules.sort_values('lift',ascending=False)
 
-    result = rules[['antecedents','consequents','support','confidence','lift']]
-
+    result = rules[['antecedents','consequents','support','confidence','lift','conviction']]
     result.sort_values('confidence',ascending=False)
 
     return result
