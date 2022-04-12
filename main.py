@@ -86,7 +86,6 @@ if __name__ == '__main__':
     connection_str =  'Driver={SQL Server};' + 'Server=' + server_name + ";Database=" + db_name + ";Trusted_Connection=yes;"
     conn = pyodbc.connect(connection_str)
     cursor = conn.cursor()
-    counter = 0
 
     #Sample select query
     cursor.execute("SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[Product].[Name] FROM [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] ORDER BY [SalesOrderID] ASC;") 
@@ -99,11 +98,9 @@ if __name__ == '__main__':
             dataset.append(products)
             products = []
             products.append(row[1])
-
+        print("x")
         lastID = row[0]
         row = cursor.fetchone()
-        #counter += 1
-        #print(counter)
 
     te = TransactionEncoder()
     te_ary = te.fit(dataset).transform(dataset)
