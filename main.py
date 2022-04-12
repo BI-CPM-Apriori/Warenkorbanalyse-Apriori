@@ -5,7 +5,6 @@ from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 import sys
 
-from numpy import DataSource
 from mainwindow import Ui_MainWindow
 from uifunctions import *
 import dataset
@@ -81,15 +80,10 @@ if __name__ == '__main__':
     # Parameter 
     # 1 = Produkte, 2 = Kategorien
     ds = dataset.createDataset("1")
-    
-
     print(apriori.getResult(ds))
 
     app = QApplication(sys.argv)
-
     mainWindow = MainWindow()
-
     mainWindow.show()
-
 
     sys.exit(app.exec_())
