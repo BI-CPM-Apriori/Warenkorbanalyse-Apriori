@@ -7,8 +7,7 @@ import sys
 
 from mainwindow import Ui_MainWindow
 from uifunctions import *
-import dataset
-import apriori
+from Apriori import dataset, apriori
 
 
 class MainWindow(QMainWindow):

@@ -1,5 +1,4 @@
-import dbConnection
-import read
+from Database import dbConnection, read
 
 def createDataset(x):
     dataset = []
