@@ -207,9 +207,9 @@ if __name__ == '__main__':
 
     # Param 
     # 1 = Produkte, 2 = Kategorien
-    #param = "1"
-    #ds = dataset.createDataset(param)
-    #print(apriori.getResult(ds, param))
+    param = "1"
+    ds = dataset.createDataset(param)
+    print(apriori.getResult(ds, param))
 
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
