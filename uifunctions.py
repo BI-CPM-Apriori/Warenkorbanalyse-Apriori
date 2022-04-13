@@ -61,5 +61,4 @@ class UIFunctions(MainWindow):
             self.animation2.setEndValue(heightExtended2)
             self.animation2.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
             self.animation2.start()
-
-
+            

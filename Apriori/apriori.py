@@ -16,17 +16,15 @@ def getResult(ds, param):
         threshold = 16
 
     frequent_itemsets = apriori(df,min_support=supp,use_colnames=True)
-    #frequent_itemsets.sort_values('support',ascending=False)
+    frequent_itemsets.sort_values('support',ascending=False)
 
     rules = association_rules(frequent_itemsets,metric='lift',min_threshold=threshold)
     rules.sort_values('lift',ascending=False)
 
-    #result = rules[['antecedents','consequents','support','confidence','lift','conviction']]
-    result = rules[['antecedents','consequents','support','confidence','lift']]
+    result = rules[['antecedents','consequents','support','confidence','lift','conviction']]
     result.sort_values(by=['confidence'], ascending=False, inplace=True)
 
     size = int(result.index.size/2)
 
     result = result.iloc[:size, :]
 
-    return result
