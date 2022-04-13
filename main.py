@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super(MainWindow, self).__init__()
-        self.setWindowTitle("GodundLassewerdenreich")
+        self.setWindowTitle("")
         self.setAcceptDrops(True)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         
@@ -192,7 +192,7 @@ class MainWindow(QMainWindow):
 
         # SET VALUES TO NEW STYLESHEET
         newStylesheet = styleSheet.replace("{STOP_1}", stop_1).replace("{STOP_2}", stop_2)
-        print(newStylesheet)
+      
 
         # APPLY STYLESHEET WITH NEW VALUES
         frame.ui.progressKreis.setStyleSheet(newStylesheet)
@@ -261,11 +261,11 @@ class Ergebnissframe1zu1(QWidget):
 
 if __name__ == '__main__':
 
-    # Param 
-    # 1 = Produkte, 2 = Kategorien
-    #param = "1"
-    #ds = dataset.createDataset(param)
-    #print(apriori.getResult(ds, param))
+     #Param 
+     #1 = Produkte, 2 = Kategorien
+    param = "1"
+    ds = dataset.createDataset(param)
+    print(apriori.getResult(ds, param))
 
     app = QApplication(sys.argv)
     mainWindow = MainWindow()

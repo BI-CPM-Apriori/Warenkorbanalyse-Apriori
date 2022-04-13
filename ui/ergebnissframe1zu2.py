@@ -124,7 +124,7 @@ class Ui_Form2(object):
         self.verticalLayout_15.setContentsMargins(-1, -1, -1, 0)
         self.label_6 = QLabel(self.frame_14)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setPixmap(QPixmap(u"images/pfeil.png"))
+        self.label_6.setPixmap(QPixmap(u"images/pfeil_lang.png"))
         self.label_6.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_15.addWidget(self.label_6)

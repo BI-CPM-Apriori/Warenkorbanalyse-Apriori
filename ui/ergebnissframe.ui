@@ -354,7 +354,7 @@
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap>images/pfeil.png</pixmap>
+                  <pixmap>images/pfeil_lang.png</pixmap>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>

@@ -231,7 +231,7 @@
                      <string>Mountainbike 1</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignCenter</set>
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
@@ -243,6 +243,12 @@
             </item>
             <item>
              <widget class="QFrame" name="frame_14">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
@@ -259,7 +265,7 @@
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap>images/pfeil.png</pixmap>
+                  <pixmap>images/pfeil_lang.png</pixmap>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -306,6 +312,9 @@
                    <widget class="QLabel" name="photo2">
                     <property name="text">
                      <string>TextLabel</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
