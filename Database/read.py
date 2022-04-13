@@ -1,6 +1,11 @@
+def getProductName(productID):
+    sql = "SELECT [AdventureWorks2019].[Production].[Product].[Name] FROM [AdventureWorks2019].[Production].[Product] WHERE [AdventureWorks2019].[Production].[Product].[ProductID] = " + str(productID) + ";"
 
-def getProductPhoto(product):
-    sql = "SELECT [AdventureWorks2019].[Production].[ProductPhoto].[LargePhoto] FROM [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductPhoto], [AdventureWorks2019].[Production].[ProductProductPhoto] WHERE [AdventureWorks2019].[Production].[Product].[ProductID] = [AdventureWorks2019].[Production].[ProductProductPhoto].ProductID AND [AdventureWorks2019].[Production].[ProductPhoto].[ProductPhotoID] = [AdventureWorks2019].[Production].[ProductProductPhoto].[ProductPhotoID] AND [AdventureWorks2019].[Production].[Product].[Name] = '" + str(product) + "';"
+    return sql
+
+
+def getProductPhoto(productID):
+    sql = "SELECT [AdventureWorks2019].[Production].[ProductPhoto].[LargePhoto] FROM [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductPhoto], [AdventureWorks2019].[Production].[ProductProductPhoto] WHERE [AdventureWorks2019].[Production].[Product].[ProductID] = [AdventureWorks2019].[Production].[ProductProductPhoto].ProductID AND [AdventureWorks2019].[Production].[ProductPhoto].[ProductPhotoID] = [AdventureWorks2019].[Production].[ProductProductPhoto].[ProductPhotoID] AND [AdventureWorks2019].[Production].[Product].[ProductID] = " + str(productID) + ";"
 
     return sql
 
