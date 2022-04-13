@@ -4,8 +4,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFo
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 import sys
-from ergebnissframe import Ui_Form
-from mainwindow import Ui_MainWindow
+from ui.ergebnissframe import Ui_Form
+from ui.ergebnissframe1zu2 import Ui_Form2
+from ui.ergebnissframe1zu1 import Ui_Form3
+from ui.mainwindow import Ui_MainWindow
 from uifunctions import *
 from Apriori import dataset, apriori
 from Database import dbConnection, read
@@ -32,8 +34,8 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.showMaximized()
         frame = Ergebnissframe(self)
-        frame2 = Ergebnissframe(self)
-        frame3 = Ergebnissframe(self)
+        frame2 = Ergebnissframe1zu2(self)
+        frame3 = Ergebnissframe1zu1(self)
         frame4 = Ergebnissframe(self)
 
         
@@ -101,9 +103,40 @@ class MainWindow(QMainWindow):
         retrieved_bytes = cursor.execute(read.getProductPhoto("Mountain-300 Black, 44")).fetchone()
         for row in retrieved_bytes:
             row_to_list = [elem for elem in row]
+            
         pixmap = QPixmap()
         pixmap.loadFromData(bytearray(row_to_list))
-        frame.ui.photo.setPixmap(pixmap)       
+        frame.ui.photo.setPixmap(pixmap)   
+        
+        pixmap1 = QPixmap()
+        pixmap1.loadFromData(bytearray(row_to_list))
+        frame.ui.photo2.setPixmap(pixmap1)     
+        
+        pixmap2 = QPixmap()
+        pixmap2.loadFromData(bytearray(row_to_list))
+        frame.ui.photo3.setPixmap(pixmap2)   
+        
+        pixmap3 = QPixmap()
+        pixmap3.loadFromData(bytearray(row_to_list))
+        frame2.ui.photo.setPixmap(pixmap3)   
+        
+        pixmap4 = QPixmap()
+        pixmap4.loadFromData(bytearray(row_to_list))
+        frame2.ui.photo2.setPixmap(pixmap4)     
+        
+        pixmap5 = QPixmap()
+        pixmap5.loadFromData(bytearray(row_to_list))
+        frame2.ui.photo3.setPixmap(pixmap5)       
+        
+        pixmap6 = QPixmap()
+        pixmap6.loadFromData(bytearray(row_to_list))
+        frame3.ui.photo.setPixmap(pixmap6)   
+        
+        pixmap7 = QPixmap()
+        pixmap7.loadFromData(bytearray(row_to_list))
+        frame3.ui.photo2.setPixmap(pixmap7)     
+        
+              
         
         
     def progress (self,frame):
@@ -176,14 +209,9 @@ class MainWindow(QMainWindow):
             self.flagMaxi = False
 
     def closeEvent(self, event):
-        userInfo = QMessageBox.question(self,"Bestätigung","Wollen sie die Applikation schließen ?", QMessageBox.Yes | QMessageBox.No)
+        event.accept()
 
-        if userInfo == QMessageBox.Yes:
-            event.accept()
-
-        elif userInfo == QMessageBox.No:
-            event.ignore()
-
+        
     def minimize(self):
         self.showMinimized()
 
@@ -198,11 +226,39 @@ class Ergebnissframe(QWidget):
         ##Window wird Frameless gesetzt
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground) 
-        
     
     def mousePressEvent(self, event):
         self.clicked.emit()
         
+class Ergebnissframe1zu2(QWidget):
+    clicked = Signal()
+    
+    def __init__(self, parent=None):
+        super(Ergebnissframe1zu2, self).__init__(parent=parent)
+        self.ui = Ui_Form2()
+        self.ui.setupUi(self)
+        ##Window wird Frameless gesetzt
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground) 
+    
+    def mousePressEvent(self, event):
+        self.clicked.emit()
+        
+class Ergebnissframe1zu1(QWidget):
+    clicked = Signal()
+    
+    def __init__(self, parent=None):
+        super(Ergebnissframe1zu1, self).__init__(parent=parent)
+        self.ui = Ui_Form3()
+        self.ui.setupUi(self)
+        ##Window wird Frameless gesetzt
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground) 
+    
+    def mousePressEvent(self, event):
+        self.clicked.emit()
+
+
 if __name__ == '__main__':
 
     # Param 
