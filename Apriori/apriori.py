@@ -12,6 +12,7 @@ def getResult(ds, param):
         threshold = 10
     elif param == "2":
         supp = 0.015
+        #supp = 0.0112
         threshold = 16
 
     frequent_itemsets = apriori(df,min_support=supp,use_colnames=True)

@@ -8,9 +8,11 @@ def createDataset(param):
     cursor = conn.cursor()
 
     if param == "1":
-        sql = read.getProducts()
+        sql = read.getProductsAll()
+        sql = read.getProductsByCountry(10)
     elif param == "2":
-        sql = read.getCategories()
+        sql = read.getCategoriesAll()
+        #sql = read.getCategoriesByCountry(10)
 
     cursor.execute(sql) 
     row = cursor.fetchone()
