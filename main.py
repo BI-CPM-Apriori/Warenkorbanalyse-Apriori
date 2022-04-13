@@ -266,8 +266,11 @@ if __name__ == '__main__':
     # 1 = Produkte, 2 = Kategorien
     param = "1"
     ds = dataset.createDataset(param)
-    print(apriori.getResult(ds, param))
-    #df = apriori.getResult(ds, param)
+    #print(apriori.getResult(ds, param))
+    #dataFrame = apriori.getResult(ds, param)
+
+    for index, row in apriori.getResult(ds, param).iterrows():
+        print(list(row['antecedents']), list(row['consequents']), row['support'], row['confidence'], row['lift'], row['conviction'])
 
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
