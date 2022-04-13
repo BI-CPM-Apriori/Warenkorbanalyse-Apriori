@@ -61,80 +61,98 @@ class MainWindow(QMainWindow):
         cursor = conn.cursor()
 
         print(list(row['antecedents']), list(row['consequents']), row['support'], row['confidence'], row['lift'], row['conviction'])
+        print(row['support'])
         
         if (len(list(row['antecedents'])) == 2 and len(list(row['consequents'])) == 1):
             
             frame = Ergebnissframe(self)
-            retrieved_bytes = cursor.execute(read.getProductPhoto("Mountain-300 Black, 44")).fetchone()
+            retrieved_bytes = cursor.execute(read.getProductPhoto(list(row['antecedents'])[0])).fetchone()
+            retrieved_bytes2 = cursor.execute(read.getProductPhoto(list(row['antecedents'])[1])).fetchone()
+            retrieved_bytes3 = cursor.execute(read.getProductPhoto(list(row['consequents'])[0])).fetchone()
             
-            for row in retrieved_bytes:
-                row_to_list = [elem for elem in row]
+            for rows in retrieved_bytes:
+                row_to_list = [elem for elem in rows]
             
-            pixmap5 = QPixmap()
-            pixmap5.loadFromData(bytearray(row_to_list))
-            frame.ui.photo3.setPixmap(pixmap5)       
+            for rows in retrieved_bytes2:
+                row_to_list1 = [elem for elem in rows]
             
-            pixmap6 = QPixmap()
-            pixmap6.loadFromData(bytearray(row_to_list))
-            frame.ui.photo.setPixmap(pixmap6)   
+            for rows in retrieved_bytes3:
+                row_to_list2 = [elem for elem in rows]
             
-            pixmap7 = QPixmap()
-            pixmap7.loadFromData(bytearray(row_to_list))
-            frame.ui.photo2.setPixmap(pixmap7)
+            pixmap = QPixmap()
+            pixmap.loadFromData(bytearray(row_to_list))
+            frame.ui.photo.setPixmap(pixmap)       
             
-            #frame.ui.produkt1.setText(list(row['antecedents'])[0])
-            #frame.ui.produkt2.setText(list(row['antecedents'])[1])
-            #frame.ui.produkt3.setText(list(row['consequents'])[0])
+            pixmap1 = QPixmap()
+            pixmap1.loadFromData(bytearray(row_to_list1))
+            frame.ui.photo2.setPixmap(pixmap1)   
+            
+            pixmap2 = QPixmap()
+            pixmap2.loadFromData(bytearray(row_to_list2))
+            frame.ui.photo3.setPixmap(pixmap2)
+            
+            frame.ui.produkt1.setText(str(list(row['antecedents'])[0]))
+            frame.ui.produkt2.setText(str(list(row['antecedents'])[1]))
+            frame.ui.produkt3.setText(str(list(row['consequents'])[0]))
               
         elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 2):
             frame = Ergebnissframe1zu2(self)
+            retrieved_bytes = cursor.execute(read.getProductPhoto(list(row['antecedents'])[0])).fetchone()
+            retrieved_bytes2 = cursor.execute(read.getProductPhoto(list(row['consequents'])[0])).fetchone()
+            retrieved_bytes3 = cursor.execute(read.getProductPhoto(list(row['consequents'])[1])).fetchone()
             
-            for row in retrieved_bytes:
-                row_to_list = [elem for elem in row]
+            for rows in retrieved_bytes:
+                row_to_list = [elem for elem in rows]
             
-            pixmap5 = QPixmap()
-            pixmap5.loadFromData(bytearray(row_to_list))
-            frame.ui.photo3.setPixmap(pixmap5)       
+            for rows in retrieved_bytes2:
+                row_to_list1 = [elem for elem in rows]
             
-            pixmap6 = QPixmap()
-            pixmap6.loadFromData(bytearray(row_to_list))
-            frame.ui.photo.setPixmap(pixmap6)   
+            for rows in retrieved_bytes3:
+                row_to_list2 = [elem for elem in rows]
             
-            pixmap7 = QPixmap()
-            pixmap7.loadFromData(bytearray(row_to_list))
-            frame.ui.photo2.setPixmap(pixmap7)   
+            pixmap = QPixmap()
+            pixmap.loadFromData(bytearray(row_to_list))
+            frame.ui.photo.setPixmap(pixmap)       
             
-            #frame.ui.produkt1.setText(list(row['antecedents'])[0])
-            #frame.ui.produkt2.setText(list(row['consequents'])[0])
-            #frame.ui.produkt3.setText(list(row['consequents'])[1])
+            pixmap1 = QPixmap()
+            pixmap1.loadFromData(bytearray(row_to_list1))
+            frame.ui.photo2.setPixmap(pixmap1)   
+            
+            pixmap2 = QPixmap()
+            pixmap2.loadFromData(bytearray(row_to_list2))
+            frame.ui.photo3.setPixmap(pixmap2)
+            
+            frame.ui.produkt1.setText(str(list(row['antecedents'])[0]))
+            frame.ui.produkt2.setText(str(list(row['consequents'])[0]))
+            frame.ui.produkt3.setText(str(list(row['consequents'])[1]))
             
         elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 1):
             frame = Ergebnissframe1zu1(self)
+            retrieved_bytes = cursor.execute(read.getProductPhoto(list(row['antecedents'])[0])).fetchone()
+            retrieved_bytes2 = cursor.execute(read.getProductPhoto(list(row['consequents'])[0])).fetchone()
             
-            for row in retrieved_bytes:
-                row_to_list = [elem for elem in row]
+            for rows in retrieved_bytes:
+                row_to_list = [elem for elem in rows]
             
-            pixmap5 = QPixmap()
-            pixmap5.loadFromData(bytearray(row_to_list))
-            frame.ui.photo3.setPixmap(pixmap5)       
+            for rows in retrieved_bytes2:
+                row_to_list1 = [elem for elem in rows]
             
-            pixmap6 = QPixmap()
-            pixmap6.loadFromData(bytearray(row_to_list))
-            frame.ui.photo.setPixmap(pixmap6)   
+            pixmap = QPixmap()
+            pixmap.loadFromData(bytearray(row_to_list))
+            frame.ui.photo.setPixmap(pixmap)       
             
-            pixmap7 = QPixmap()
-            pixmap7.loadFromData(bytearray(row_to_list))
-            frame.ui.photo2.setPixmap(pixmap7)   
+            pixmap1 = QPixmap()
+            pixmap1.loadFromData(bytearray(row_to_list1))
+            frame.ui.photo2.setPixmap(pixmap1)   
             
-            #frame.ui.produkt1.setText(list(row['antecedents'])[0])
-            #frame.ui.produkt2.setText(list(row['consequents'])[0])
+            frame.ui.produkt1.setText(str(list(row['antecedents'])[0]))
+            frame.ui.produkt2.setText(str(list(row['consequents'])[0]))
             
-        #self.confidence = round(float((row['confidence']) * 100 ),0)
-        self.confidence = 80
-        print(row['support'])
-        frame.ui.labelSupport.setText(str(row['support']))
-        frame.ui.labelLift.setText(row['lift'])
-        frame.ui.labelConf.setText(row['conviction'])
+        confidence = round(int((row['confidence']) * 100 ),0)
+       
+        frame.ui.labelSupport.setText(str(round(float((row['support']) * 100 ),2))+ "%")
+        frame.ui.labelLift.setText(str(round((row['lift'] ),2)))
+        frame.ui.labelConf.setText(str(round((row['conviction'] ),2)))
         
         shadow = QGraphicsDropShadowEffect(self)
         shadow.setBlurRadius(20)
@@ -148,14 +166,44 @@ class MainWindow(QMainWindow):
         
         frame.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame,70,270,True))
         
+        htmlText = """<p><span style=" font-size:25pt;">{VALUE}</span><span style=" font-size:22pt; vertical-align:center;">%</span></p>"""
+
+        # REPLACE VALUE
+        newHtml = htmlText.replace("{VALUE}", str(confidence))
+
+        frame.ui.labelConfidence.setText(newHtml)
+                
+        # PROGRESSBAR STYLESHEET BASE
+        styleSheet = """
+        QFrame{
+        	border-radius: 70px;
+            background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{STOP_1} rgba(255, 255, 255, 0), stop:{STOP_2} rgba(13, 72, 72, 255));
+        }
+        """
+
+        # GET PROGRESS BAR VALUE, CONVERT TO FLOAT AND INVERT VALUES
+        # stop works of 1.000 to 0.000
+        progress = (100 - confidence) / 100.0
+
+        # GET NEW VALUES
+        stop_1 = str(progress - 0.001)
+        stop_2 = str(progress)
+
+        # SET VALUES TO NEW STYLESHEET
+        newStylesheet = styleSheet.replace("{STOP_1}", stop_1).replace("{STOP_2}", stop_2)
+      
+
+        # APPLY STYLESHEET WITH NEW VALUES
+        frame.ui.progressKreis.setStyleSheet(newStylesheet)
+        
          ## QTIMER ==> START
-        self.timer = QtCore.QTimer()
-        self.timer.timeout.connect(lambda: self.progress(frame))
+        #self.timer = QtCore.QTimer()
+        #self.timer.timeout.connect(lambda: self.progress(frame,confidence))
         # TIMER IN MILLISECONDS
-        self.timer.start(15)
+        #self.timer.start(15)
         
         
-    def progress (self,frame):
+    def progress (self,frame,confidence):
         global counter
         global jumper
         value = counter
@@ -178,7 +226,7 @@ class MainWindow(QMainWindow):
         self.progressBarValue(value,frame)
 
         # CLOSE SPLASH SCREE AND OPEN APP
-        if counter > self.confidence:
+        if counter > confidence:
             # STOP TIMER
             self.timer.stop()
 
@@ -293,5 +341,7 @@ if __name__ == '__main__':
     
     for index, row in apriori.getResult(ds, param).iterrows():
         mainWindow.addPanel(row)
+        
+    
 
     sys.exit(app.exec_())
