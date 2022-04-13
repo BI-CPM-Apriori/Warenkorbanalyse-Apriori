@@ -1,6 +1,8 @@
 
 def getProductPhoto(product):
-    sql = "SELECT [AdventureWorks2019].[Production].[ProductPhoto].[ThumbNailPhoto] FROM [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductPhoto], [AdventureWorks2019].[Production].[ProductProductPhoto] WHERE [AdventureWorks2019].[Production].[Product].[ProductID] = [AdventureWorks2019].[Production].[ProductProductPhoto].ProductID AND [AdventureWorks2019].[Production].[ProductPhoto].[ProductPhotoID] = [AdventureWorks2019].[Production].[ProductProductPhoto].[ProductPhotoID] AND [AdventureWorks2019].[Production].[Product].[Name] = '" + str(product) + "';"
+    sql = "SELECT [AdventureWorks2019].[Production].[ProductPhoto].[LargePhoto] FROM [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductPhoto], [AdventureWorks2019].[Production].[ProductProductPhoto] WHERE [AdventureWorks2019].[Production].[Product].[ProductID] = [AdventureWorks2019].[Production].[ProductProductPhoto].ProductID AND [AdventureWorks2019].[Production].[ProductPhoto].[ProductPhotoID] = [AdventureWorks2019].[Production].[ProductProductPhoto].[ProductPhotoID] AND [AdventureWorks2019].[Production].[Product].[Name] = '" + str(product) + "';"
+
+    return sql
 
 def getProductsAll():
     sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[Product].[Name] FROM [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] ORDER BY [SalesOrderID] ASC;"

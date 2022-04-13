@@ -8,6 +8,7 @@ from ergebnissframe import Ui_Form
 from mainwindow import Ui_MainWindow
 from uifunctions import *
 from Apriori import dataset, apriori
+from Database import dbConnection, read
 
 # GLOBALS
 counter = 0
@@ -94,7 +95,10 @@ class MainWindow(QMainWindow):
         # TIMER IN MILLISECONDS
         self.timer.start(15)
         
-        retrieved_bytes = "cursor.execute("SELECT Photo FROM [RusGuardDB].[dbo].[EmployeePhoto]").fetchone()"
+        conn = dbConnection.openConn()
+        cursor = conn.cursor()
+
+        retrieved_bytes = cursor.execute(read.getProductPhoto("Mountain-300 Black, 44")).fetchone()
         for row in retrieved_bytes:
             row_to_list = [elem for elem in row]
         pixmap = QPixmap()
