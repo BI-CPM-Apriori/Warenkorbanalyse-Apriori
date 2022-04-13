@@ -16,7 +16,7 @@ import pandas as pd
 # GLOBALS
 counter = 0
 jumper = 10
-
+counterlength = 0
 
 class MainWindow(QMainWindow):
 
@@ -50,18 +50,13 @@ class MainWindow(QMainWindow):
         #Change View (Pages)
         self.ui.btnDashboard.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dashboard))
         self.ui.btnAnalyse.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.analyse))
-        
-        
-        
-        
-        
+           
     def addPanel(self, row):
+        global counterlength
+        counterlength += 1
         
         conn = dbConnection.openConn()
         cursor = conn.cursor()
-
-        print(list(row['antecedents']), list(row['consequents']), row['support'], row['confidence'], row['lift'], row['conviction'])
-        print(row['support'])
         
         if (len(list(row['antecedents'])) == 2 and len(list(row['consequents'])) == 1):
             
@@ -91,9 +86,9 @@ class MainWindow(QMainWindow):
             pixmap2.loadFromData(bytearray(row_to_list2))
             frame.ui.photo3.setPixmap(pixmap2)
             
-            frame.ui.produkt1.setText(str(list(row['antecedents'])[0]))
-            frame.ui.produkt2.setText(str(list(row['antecedents'])[1]))
-            frame.ui.produkt3.setText(str(list(row['consequents'])[0]))
+            frame.ui.produkt1.setText(str(cursor.execute(read.getProductName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getProductName(list(row['antecedents'])[1])).fetchone()[0]))
+            frame.ui.produkt3.setText(str(cursor.execute(read.getProductName(list(row['consequents'])[0])).fetchone()[0]))
               
         elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 2):
             frame = Ergebnissframe1zu2(self)
@@ -122,9 +117,9 @@ class MainWindow(QMainWindow):
             pixmap2.loadFromData(bytearray(row_to_list2))
             frame.ui.photo3.setPixmap(pixmap2)
             
-            frame.ui.produkt1.setText(str(list(row['antecedents'])[0]))
-            frame.ui.produkt2.setText(str(list(row['consequents'])[0]))
-            frame.ui.produkt3.setText(str(list(row['consequents'])[1]))
+            frame.ui.produkt1.setText(str(cursor.execute(read.getProductName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getProductName(list(row['consequents'])[0])).fetchone()[0]))
+            frame.ui.produkt3.setText(str(cursor.execute(read.getProductName(list(row['consequents'])[1])).fetchone()[0]))
             
         elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 1):
             frame = Ergebnissframe1zu1(self)
@@ -145,8 +140,9 @@ class MainWindow(QMainWindow):
             pixmap1.loadFromData(bytearray(row_to_list1))
             frame.ui.photo2.setPixmap(pixmap1)   
             
-            frame.ui.produkt1.setText(str(list(row['antecedents'])[0]))
-            frame.ui.produkt2.setText(str(list(row['consequents'])[0]))
+            
+            frame.ui.produkt1.setText(str(cursor.execute(read.getProductName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getProductName(list(row['consequents'])[0])).fetchone()[0]))
             
         confidence = round(int((row['confidence']) * 100 ),0)
        
@@ -162,7 +158,11 @@ class MainWindow(QMainWindow):
         frame.setGraphicsEffect(shadow)
         
         self.ui.results.addWidget(frame)
-        self.ui.results.addStretch()
+        
+        if counterlength == lengthFrame:
+            self.ui.results.addStretch()
+            counterlength = 0
+            print("ich bin ein Ficker")
         
         frame.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame,70,270,True))
         
@@ -263,10 +263,7 @@ class MainWindow(QMainWindow):
 
     def testing(self):
         print("hallo")
-        
     
-        
-         
     def maximize(self):
         if self.isMaximized():
             self.showNormal()
@@ -332,9 +329,10 @@ if __name__ == '__main__':
     # 1 = Produkte, 2 = Kategorien
     param = "1"
     ds = dataset.createDataset(param)
-    #print(apriori.getResult(ds, param))
-    #dataFrame = apriori.getResult(ds, param)
-
+    
+    dataFrame = apriori.getResult(ds, param)
+    lengthFrame = int(dataFrame.index.size)
+    
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
     mainWindow.show()
@@ -342,6 +340,4 @@ if __name__ == '__main__':
     for index, row in apriori.getResult(ds, param).iterrows():
         mainWindow.addPanel(row)
         
-    
-
     sys.exit(app.exec_())

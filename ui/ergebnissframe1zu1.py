@@ -105,7 +105,7 @@ class Ui_Form3(object):
         font.setFamilies([u"Bahnschrift"])
         font.setPointSize(14)
         self.produkt1.setFont(font)
-        self.produkt1.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.produkt1.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_16.addWidget(self.produkt1)
 
@@ -114,6 +114,39 @@ class Ui_Form3(object):
 
 
         self.horizontalLayout_4.addWidget(self.frame_12)
+
+        self.frame_15 = QFrame(self.frame_6)
+        self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setMinimumSize(QSize(300, 0))
+        self.frame_15.setFrameShape(QFrame.StyledPanel)
+        self.frame_15.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_11 = QVBoxLayout(self.frame_15)
+        self.verticalLayout_11.setSpacing(7)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.frame_20 = QFrame(self.frame_15)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_14 = QVBoxLayout(self.frame_20)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+
+        self.verticalLayout_11.addWidget(self.frame_20)
+
+        self.frame_21 = QFrame(self.frame_15)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setMaximumSize(QSize(16777215, 25))
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_18 = QVBoxLayout(self.frame_21)
+        self.verticalLayout_18.setSpacing(0)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
+
+        self.verticalLayout_11.addWidget(self.frame_21)
+
+
+        self.horizontalLayout_4.addWidget(self.frame_15)
 
         self.frame_14 = QFrame(self.frame_6)
         self.frame_14.setObjectName(u"frame_14")
