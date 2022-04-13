@@ -16,7 +16,7 @@ import pandas as pd
 # GLOBALS
 counter = 0
 jumper = 10
-confidence = 80
+
 
 class MainWindow(QMainWindow):
 
@@ -34,48 +34,10 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.showMaximized()
-        frame = Ergebnissframe(self)
-        frame2 = Ergebnissframe1zu2(self)
-        frame3 = Ergebnissframe1zu1(self)
-        frame4 = Ergebnissframe(self)
-
         
-        self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setBlurRadius(20)
-        self.shadow.setXOffset(0)
-        self.shadow.setYOffset(0)
-        self.shadow.setColor(QColor(0, 0, 0, 60))
-        frame.setGraphicsEffect(self.shadow)
-        
-        self.shadow1 = QGraphicsDropShadowEffect(self)
-        self.shadow1.setBlurRadius(20)
-        self.shadow1.setXOffset(0)
-        self.shadow1.setYOffset(0)
-        self.shadow1.setColor(QColor(0, 0, 0, 60))
-        frame2.setGraphicsEffect(self.shadow1)
-        
-        self.shadow2 = QGraphicsDropShadowEffect(self)
-        self.shadow2.setBlurRadius(20)
-        self.shadow2.setXOffset(0)
-        self.shadow2.setYOffset(0)
-        self.shadow2.setColor(QColor(0, 0, 0, 60))
-        frame3.setGraphicsEffect(self.shadow2)
-        
-        self.shadow3 = QGraphicsDropShadowEffect(self)
-        self.shadow3.setBlurRadius(20)
-        self.shadow3.setXOffset(0)
-        self.shadow3.setYOffset(0)
-        self.shadow3.setColor(QColor(0, 0, 0, 60))
-        frame4.setGraphicsEffect(self.shadow3)
-        
-        frame2.clicked.connect(self.testing)
+        #frame.clicked.connect(self.testing)
   
-        self.ui.results.addWidget(frame)
-        self.ui.results.addWidget(frame2)
-        self.ui.results.addWidget(frame3)
-        self.ui.results.addWidget(frame4)
-  
-        self.ui.results.addStretch()
+        
         #Define UI action
         self.ui.closeEvent = self.closeEvent
         self.ui.exitButton.clicked.connect(self.close)
@@ -83,61 +45,114 @@ class MainWindow(QMainWindow):
         self.ui.minimizeButton.clicked.connect(self.minimize)
 
         self.ui.btnToggle.clicked.connect(lambda bda: UIFunctions.toggleMenu(self,250,True))
-        frame.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame,70,270,True))
-        frame2.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame2,70,270,True))
-        frame3.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame3,70,270,True))
-        frame4.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame4,70,270,True))
+        
 
         #Change View (Pages)
         self.ui.btnDashboard.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dashboard))
         self.ui.btnAnalyse.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.analyse))
+        
+        
+        
+        
+        
+    def addPanel(self, row):
+        
+        conn = dbConnection.openConn()
+        cursor = conn.cursor()
+
+        print(list(row['antecedents']), list(row['consequents']), row['support'], row['confidence'], row['lift'], row['conviction'])
+        
+        if (len(list(row['antecedents'])) == 2 and len(list(row['consequents'])) == 1):
+            
+            frame = Ergebnissframe(self)
+            retrieved_bytes = cursor.execute(read.getProductPhoto("Mountain-300 Black, 44")).fetchone()
+            
+            for row in retrieved_bytes:
+                row_to_list = [elem for elem in row]
+            
+            pixmap5 = QPixmap()
+            pixmap5.loadFromData(bytearray(row_to_list))
+            frame.ui.photo3.setPixmap(pixmap5)       
+            
+            pixmap6 = QPixmap()
+            pixmap6.loadFromData(bytearray(row_to_list))
+            frame.ui.photo.setPixmap(pixmap6)   
+            
+            pixmap7 = QPixmap()
+            pixmap7.loadFromData(bytearray(row_to_list))
+            frame.ui.photo2.setPixmap(pixmap7)
+            
+            #frame.ui.produkt1.setText(list(row['antecedents'])[0])
+            #frame.ui.produkt2.setText(list(row['antecedents'])[1])
+            #frame.ui.produkt3.setText(list(row['consequents'])[0])
+              
+        elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 2):
+            frame = Ergebnissframe1zu2(self)
+            
+            for row in retrieved_bytes:
+                row_to_list = [elem for elem in row]
+            
+            pixmap5 = QPixmap()
+            pixmap5.loadFromData(bytearray(row_to_list))
+            frame.ui.photo3.setPixmap(pixmap5)       
+            
+            pixmap6 = QPixmap()
+            pixmap6.loadFromData(bytearray(row_to_list))
+            frame.ui.photo.setPixmap(pixmap6)   
+            
+            pixmap7 = QPixmap()
+            pixmap7.loadFromData(bytearray(row_to_list))
+            frame.ui.photo2.setPixmap(pixmap7)   
+            
+            #frame.ui.produkt1.setText(list(row['antecedents'])[0])
+            #frame.ui.produkt2.setText(list(row['consequents'])[0])
+            #frame.ui.produkt3.setText(list(row['consequents'])[1])
+            
+        elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 1):
+            frame = Ergebnissframe1zu1(self)
+            
+            for row in retrieved_bytes:
+                row_to_list = [elem for elem in row]
+            
+            pixmap5 = QPixmap()
+            pixmap5.loadFromData(bytearray(row_to_list))
+            frame.ui.photo3.setPixmap(pixmap5)       
+            
+            pixmap6 = QPixmap()
+            pixmap6.loadFromData(bytearray(row_to_list))
+            frame.ui.photo.setPixmap(pixmap6)   
+            
+            pixmap7 = QPixmap()
+            pixmap7.loadFromData(bytearray(row_to_list))
+            frame.ui.photo2.setPixmap(pixmap7)   
+            
+            #frame.ui.produkt1.setText(list(row['antecedents'])[0])
+            #frame.ui.produkt2.setText(list(row['consequents'])[0])
+            
+        #self.confidence = round(float((row['confidence']) * 100 ),0)
+        self.confidence = 80
+        print(row['support'])
+        frame.ui.labelSupport.setText(str(row['support']))
+        frame.ui.labelLift.setText(row['lift'])
+        frame.ui.labelConf.setText(row['conviction'])
+        
+        shadow = QGraphicsDropShadowEffect(self)
+        shadow.setBlurRadius(20)
+        shadow.setXOffset(0)
+        shadow.setYOffset(0)
+        shadow.setColor(QColor(0, 0, 0, 60))
+        frame.setGraphicsEffect(shadow)
+        
+        self.ui.results.addWidget(frame)
+        self.ui.results.addStretch()
+        
+        frame.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame,70,270,True))
         
          ## QTIMER ==> START
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(lambda: self.progress(frame))
         # TIMER IN MILLISECONDS
         self.timer.start(15)
-        
-        conn = dbConnection.openConn()
-        cursor = conn.cursor()
-
-        retrieved_bytes = cursor.execute(read.getProductPhoto("Mountain-300 Black, 44")).fetchone()
-        for row in retrieved_bytes:
-            row_to_list = [elem for elem in row]
-            
-        pixmap = QPixmap()
-        pixmap.loadFromData(bytearray(row_to_list))
-        frame.ui.photo.setPixmap(pixmap)   
-        
-        pixmap1 = QPixmap()
-        pixmap1.loadFromData(bytearray(row_to_list))
-        frame.ui.photo2.setPixmap(pixmap1)     
-        
-        pixmap2 = QPixmap()
-        pixmap2.loadFromData(bytearray(row_to_list))
-        frame.ui.photo3.setPixmap(pixmap2)   
-        
-        pixmap3 = QPixmap()
-        pixmap3.loadFromData(bytearray(row_to_list))
-        frame2.ui.photo.setPixmap(pixmap3)   
-        
-        pixmap4 = QPixmap()
-        pixmap4.loadFromData(bytearray(row_to_list))
-        frame2.ui.photo2.setPixmap(pixmap4)     
-        
-        pixmap5 = QPixmap()
-        pixmap5.loadFromData(bytearray(row_to_list))
-        frame2.ui.photo3.setPixmap(pixmap5)       
-        
-        pixmap6 = QPixmap()
-        pixmap6.loadFromData(bytearray(row_to_list))
-        frame3.ui.photo.setPixmap(pixmap6)   
-        
-        pixmap7 = QPixmap()
-        pixmap7.loadFromData(bytearray(row_to_list))
-        frame3.ui.photo2.setPixmap(pixmap7)     
-        
-              
         
         
     def progress (self,frame):
@@ -163,7 +178,7 @@ class MainWindow(QMainWindow):
         self.progressBarValue(value,frame)
 
         # CLOSE SPLASH SCREE AND OPEN APP
-        if counter > confidence:
+        if counter > self.confidence:
             # STOP TIMER
             self.timer.stop()
 
@@ -200,6 +215,9 @@ class MainWindow(QMainWindow):
 
     def testing(self):
         print("hallo")
+        
+    
+        
          
     def maximize(self):
         if self.isMaximized():
@@ -269,11 +287,11 @@ if __name__ == '__main__':
     #print(apriori.getResult(ds, param))
     #dataFrame = apriori.getResult(ds, param)
 
-    for index, row in apriori.getResult(ds, param).iterrows():
-        print(list(row['antecedents']), list(row['consequents']), row['support'], row['confidence'], row['lift'], row['conviction'])
-
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
     mainWindow.show()
+    
+    for index, row in apriori.getResult(ds, param).iterrows():
+        mainWindow.addPanel(row)
 
     sys.exit(app.exec_())

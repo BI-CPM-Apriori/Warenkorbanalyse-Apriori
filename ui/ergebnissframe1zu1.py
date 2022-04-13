@@ -99,15 +99,15 @@ class Ui_Form3(object):
         self.verticalLayout_16.setSpacing(0)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
-        self.label_3 = QLabel(self.frame_17)
-        self.label_3.setObjectName(u"label_3")
+        self.produkt1 = QLabel(self.frame_17)
+        self.produkt1.setObjectName(u"produkt1")
         font = QFont()
         font.setFamilies([u"Bahnschrift"])
         font.setPointSize(14)
-        self.label_3.setFont(font)
-        self.label_3.setAlignment(Qt.AlignCenter)
+        self.produkt1.setFont(font)
+        self.produkt1.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.verticalLayout_16.addWidget(self.label_3)
+        self.verticalLayout_16.addWidget(self.produkt1)
 
 
         self.verticalLayout_8.addWidget(self.frame_17)
@@ -117,6 +117,8 @@ class Ui_Form3(object):
 
         self.frame_14 = QFrame(self.frame_6)
         self.frame_14.setObjectName(u"frame_14")
+        sizePolicy1.setHeightForWidth(self.frame_14.sizePolicy().hasHeightForWidth())
+        self.frame_14.setSizePolicy(sizePolicy1)
         self.frame_14.setFrameShape(QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QFrame.Raised)
         self.verticalLayout_15 = QVBoxLayout(self.frame_14)
@@ -148,6 +150,7 @@ class Ui_Form3(object):
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.photo2 = QLabel(self.frame_18)
         self.photo2.setObjectName(u"photo2")
+        self.photo2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.verticalLayout_13.addWidget(self.photo2)
 
@@ -163,12 +166,12 @@ class Ui_Form3(object):
         self.verticalLayout_17.setSpacing(0)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_17.setContentsMargins(0, 0, 0, 0)
-        self.label_4 = QLabel(self.frame_19)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font)
-        self.label_4.setAlignment(Qt.AlignCenter)
+        self.produkt2 = QLabel(self.frame_19)
+        self.produkt2.setObjectName(u"produkt2")
+        self.produkt2.setFont(font)
+        self.produkt2.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_17.addWidget(self.label_4)
+        self.verticalLayout_17.addWidget(self.produkt2)
 
 
         self.verticalLayout_10.addWidget(self.frame_19)
@@ -581,10 +584,10 @@ class Ui_Form3(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.photo.setText(QCoreApplication.translate("Form", u"TextLabel", None))
-        self.label_3.setText(QCoreApplication.translate("Form", u"Mountainbike 1", None))
+        self.produkt1.setText(QCoreApplication.translate("Form", u"Mountainbike 1", None))
         self.label_6.setText("")
         self.photo2.setText(QCoreApplication.translate("Form", u"TextLabel", None))
-        self.label_4.setText(QCoreApplication.translate("Form", u"Mountainbike 2", None))
+        self.produkt2.setText(QCoreApplication.translate("Form", u"Mountainbike 2", None))
         self.labelConfidence.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; vertical-align:super;\">95%</span></p></body></html>", None))
         self.label_127.setText(QCoreApplication.translate("Form", u"Confidence", None))
         self.labelSupport.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:16pt;\">300</span></p></body></html>", None))
