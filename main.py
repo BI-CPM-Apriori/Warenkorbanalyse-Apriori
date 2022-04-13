@@ -11,6 +11,7 @@ from ui.mainwindow import Ui_MainWindow
 from uifunctions import *
 from Apriori import dataset, apriori
 from Database import dbConnection, read
+import pandas as pd
 
 # GLOBALS
 counter = 0
@@ -266,6 +267,7 @@ if __name__ == '__main__':
     param = "1"
     ds = dataset.createDataset(param)
     print(apriori.getResult(ds, param))
+    #df = apriori.getResult(ds, param)
 
     app = QApplication(sys.argv)
     mainWindow = MainWindow()

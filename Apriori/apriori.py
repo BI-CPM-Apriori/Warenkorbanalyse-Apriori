@@ -28,3 +28,4 @@ def getResult(ds, param):
 
     result = result.iloc[:size, :]
 
+    return result
