@@ -9,6 +9,10 @@ from mainwindow import Ui_MainWindow
 from uifunctions import *
 from Apriori import dataset, apriori
 
+# GLOBALS
+counter = 0
+jumper = 10
+confidence = 80
 
 class MainWindow(QMainWindow):
 
@@ -83,6 +87,78 @@ class MainWindow(QMainWindow):
         #Change View (Pages)
         self.ui.btnDashboard.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dashboard))
         self.ui.btnAnalyse.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.analyse))
+        
+         ## QTIMER ==> START
+        self.timer = QtCore.QTimer()
+        self.timer.timeout.connect(lambda: self.progress(frame))
+        # TIMER IN MILLISECONDS
+        self.timer.start(15)
+        
+        retrieved_bytes = "cursor.execute("SELECT Photo FROM [RusGuardDB].[dbo].[EmployeePhoto]").fetchone()"
+        for row in retrieved_bytes:
+            row_to_list = [elem for elem in row]
+        pixmap = QPixmap()
+        pixmap.loadFromData(bytearray(row_to_list))
+        frame.ui.photo.setPixmap(pixmap)       
+        
+        
+    def progress (self,frame):
+        global counter
+        global jumper
+        value = counter
+        
+
+        # HTML TEXT PERCENTAGE
+        htmlText = """<p><span style=" font-size:25pt;">{VALUE}</span><span style=" font-size:22pt; vertical-align:center;">%</span></p>"""
+
+        # REPLACE VALUE
+        newHtml = htmlText.replace("{VALUE}", str(jumper))
+
+        if(value > jumper):
+            # APPLY NEW PERCENTAGE TEXT
+            frame.ui.labelConfidence.setText(newHtml)
+            jumper += 10
+
+        # SET VALUE TO PROGRESS BAR
+        # fix max value error if > than 100
+        if value >= 100: value = 1.000
+        self.progressBarValue(value,frame)
+
+        # CLOSE SPLASH SCREE AND OPEN APP
+        if counter > confidence:
+            # STOP TIMER
+            self.timer.stop()
+
+        # INCREASE COUNTER
+        counter += 0.5
+        
+    ## DEF PROGRESS BAR VALUE
+    ########################################################################
+    def progressBarValue(self, value, frame):
+        
+
+        # PROGRESSBAR STYLESHEET BASE
+        styleSheet = """
+        QFrame{
+        	border-radius: 70px;
+            background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{STOP_1} rgba(255, 255, 255, 0), stop:{STOP_2} rgba(13, 72, 72, 255));
+        }
+        """
+
+        # GET PROGRESS BAR VALUE, CONVERT TO FLOAT AND INVERT VALUES
+        # stop works of 1.000 to 0.000
+        progress = (100 - value) / 100.0
+
+        # GET NEW VALUES
+        stop_1 = str(progress - 0.001)
+        stop_2 = str(progress)
+
+        # SET VALUES TO NEW STYLESHEET
+        newStylesheet = styleSheet.replace("{STOP_1}", stop_1).replace("{STOP_2}", stop_2)
+        print(newStylesheet)
+
+        # APPLY STYLESHEET WITH NEW VALUES
+        frame.ui.progressKreis.setStyleSheet(newStylesheet)
 
     def testing(self):
         print("hallo")
