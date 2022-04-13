@@ -162,7 +162,7 @@ class MainWindow(QMainWindow):
         if counterlength == lengthFrame:
             self.ui.results.addStretch()
             counterlength = 0
-            print("ich bin ein Ficker")
+            
         
         frame.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame,70,270,True))
         
