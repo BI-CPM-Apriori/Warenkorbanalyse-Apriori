@@ -331,6 +331,7 @@ if __name__ == '__main__':
     ds = dataset.createDataset(param)
     
     dataFrame = apriori.getResult(ds, param)
+    #print(apriori.getResult(ds, param))
     lengthFrame = int(dataFrame.index.size)
     
     app = QApplication(sys.argv)
@@ -339,5 +340,6 @@ if __name__ == '__main__':
     
     for index, row in apriori.getResult(ds, param).iterrows():
         mainWindow.addPanel(row)
+
         
     sys.exit(app.exec_())

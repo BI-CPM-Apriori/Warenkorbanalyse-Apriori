@@ -11,6 +11,10 @@ def getResult(ds, param):
         supp = 0.025
         threshold = 10
     elif param == "2":
+        supp = 0.0112
+        #supp = 0.0112
+        threshold = 8
+    elif param == "3":
         supp = 0.015
         #supp = 0.0112
         threshold = 16
@@ -24,6 +28,7 @@ def getResult(ds, param):
     result = rules[['antecedents','consequents','support','confidence','lift','conviction']]
     result.sort_values(by=['confidence'], ascending=False, inplace=True)
 
+    print(result)
     size = int(result.index.size/2)
 
     result = result.iloc[:size, :]
