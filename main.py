@@ -12,6 +12,7 @@ from uifunctions import *
 from Apriori import dataset, apriori
 from Database import dbConnection, read
 import pandas as pd
+import json
 
 # GLOBALS
 counter = 0
@@ -325,20 +326,32 @@ class Ergebnissframe1zu1(QWidget):
 
 if __name__ == '__main__':
 
-    # Param 
-    # 1 = ProductsAll, 2 = ProductsByCountry, 2 = CategoriesAll
-    param = "2"
-    ds = dataset.createDataset(param)
-    
-    dataFrame = apriori.getResult(ds, param)
-    #print(apriori.getResult(ds, param))
+    filter = "product"
+    country = "Europe"
+    saison = "Q2"
+
+    if filter == "product":
+        with open('Apriori/filterProducts.json','r') as file:
+            obj = json.load(file)
+    elif filter == "category":
+        with open('Apriori/filterCategories.json','r') as file:
+            obj = json.load(file)
+
+    for i in obj['filters']:
+        if i["countryName"] == country and i['saison'] == saison:
+            countryID = i['params'][0]['countryID']
+            supp = i['params'][0]['support']
+            threshold = i['params'][0]['threshold']
+
+    ds = dataset.createDataset(filter, country, countryID, saison)
+    dataFrame = apriori.getResult(ds, supp, threshold)
     lengthFrame = int(dataFrame.index.size)
     
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
     mainWindow.show()
     
-    for index, row in apriori.getResult(ds, param).iterrows():
+    for index, row in dataFrame.iterrows():
         mainWindow.addPanel(row)
 
         

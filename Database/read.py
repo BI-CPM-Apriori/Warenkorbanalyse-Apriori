@@ -3,19 +3,34 @@ def getProductName(productID):
 
     return sql
 
-
 def getProductPhoto(productID):
     sql = "SELECT [AdventureWorks2019].[Production].[ProductPhoto].[LargePhoto] FROM [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductPhoto], [AdventureWorks2019].[Production].[ProductProductPhoto] WHERE [AdventureWorks2019].[Production].[Product].[ProductID] = [AdventureWorks2019].[Production].[ProductProductPhoto].ProductID AND [AdventureWorks2019].[Production].[ProductPhoto].[ProductPhotoID] = [AdventureWorks2019].[Production].[ProductProductPhoto].[ProductPhotoID] AND [AdventureWorks2019].[Production].[Product].[ProductID] = " + str(productID) + ";"
 
     return sql
 
 def getProductsAll():
-    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[Product].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] ORDER BY [SalesOrderID] ASC;"
+    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderDetail] ORDER BY [SalesOrderID] ASC;"
 
     return sql
 
 def getProductsByCountry(country):
-    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[Product].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID] AND [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + str(country) + ") ORDER BY [SalesOrderID] ASC;"
+    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID]  AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + str(country) + ") ORDER BY [SalesOrderID] ASC;"
+
+    return sql
+
+def getProductsBySaison(saison):
+
+    quartal = getQuartal(saison)
+
+    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderDetail] WHERE " + quartal + " ORDER BY [SalesOrderID] ASC;"
+
+    return sql
+
+def getProductsByCountryAndSaison(country, saison):
+
+    quartal = getQuartal(saison)
+
+    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID]  AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + str(country) + ") AND ("+ quartal +") ORDER BY [SalesOrderID] ASC;"
 
     return sql
 
@@ -25,6 +40,29 @@ def getCategoriesAll():
     return sql
 
 def getCategoriesByCountry(country):
-    sql = "SELECT DISTINCT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[ProductSubcategory].[Name] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductSubcategory] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID] AND [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] AND [AdventureWorks2019].[Production].[Product].[ProductSubcategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductSubcategoryID] AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] = " + str(country) + " ORDER BY [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] ASC;"
+    sql = "SELECT DISTINCT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[ProductSubcategory].[Name] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductSubcategory] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID] AND [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] AND [AdventureWorks2019].[Production].[Product].[ProductSubcategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductSubcategoryID] AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + str(country) + ") ORDER BY [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] ASC;"
 
     return sql
+
+def getCategoriesBySaison(saison):
+    sql = ""
+
+    return sql
+
+def getCategoriesByCountryAndSaison(country,saison):
+    sql = ""
+
+    return sql
+
+def getQuartal(saison):
+
+    if saison == "Q1":
+        quartal = "[AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.01.2011 00:00:00.000' AND '31.03.2011 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.01.2012 00:00:00.000' AND '31.03.2012 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.01.2013 00:00:00.000' AND '31.03.2013 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.01.2014 00:00:00.000' AND '31.03.2014 00:00:00.000'"
+    elif saison == "Q2":
+        quartal = "[AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.04.2011 00:00:00.000' AND '30.06.2011 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.04.2012 00:00:00.000' AND '30.06.2012 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.04.2013 00:00:00.000' AND '30.06.2013 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.04.2014 00:00:00.000' AND '30.06.2014 00:00:00.000'"
+    elif saison == "Q3":
+        quartal = "[AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.07.2011 00:00:00.000' AND '30.09.2011 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.07.2012 00:00:00.000' AND '30.09.2012 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.07.2013 00:00:00.000' AND '30.09.2013 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.07.2014 00:00:00.000' AND '30.09.2014 00:00:00.000'"
+    else:
+        quartal = "[AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.10.2011 00:00:00.000' AND '31.12.2011 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.10.2012 00:00:00.000' AND '31.12.2012 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.10.2013 00:00:00.000' AND '31.12.2013 00:00:00.000' OR [AdventureWorks2019].[Sales].[SalesOrderDetail].[ModifiedDate] BETWEEN '01.10.2014 00:00:00.000' AND '31.12.2014 00:00:00.000'"
+
+    return quartal

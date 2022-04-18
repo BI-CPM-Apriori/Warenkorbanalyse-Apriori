@@ -1,18 +1,30 @@
 from Database import dbConnection, read
 
-def createDataset(param):
+def createDataset(filter, country, countryID, saison):
     dataset = []
     innerList = []
 
     conn = dbConnection.openConn()
     cursor = conn.cursor()
-
-    if param == "1":
-        sql = read.getProductsAll()
-    elif param == "2":
-        sql = read.getProductsByCountry("9")
-    elif param == "3":
-        sql = read.getCategoriesAll()
+    if filter == "product":
+        if country == "All" and saison == "All":
+            sql = read.getProductsAll()
+        elif country == "All":
+            sql = read.getProductsBySaison(saison)
+        elif saison == "All":
+            sql = read.getProductsByCountry(countryID)
+        else:
+            sql = read.getProductsByCountryAndSaison(countryID, saison)
+    else:
+        if country == "All" and saison == "All":
+            sql = read.getCategoriesAll()
+        elif country == "All":
+            sql = read.getCategoriesBySaison(saison)
+        elif saison == "All":
+            sql = read.getCategoriesByCountry(countryID)
+        else:
+            sql = read.getCategoriesByCountryAndSaison(countryID, saison)
+            
 
 
     cursor.execute(sql) 
