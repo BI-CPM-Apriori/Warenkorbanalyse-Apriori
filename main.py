@@ -327,7 +327,7 @@ class Ergebnissframe1zu1(QWidget):
 if __name__ == '__main__':
 
     filter = "product"
-    country = "Pacific"
+    country = "All"
     saison = "All"
 
     ds = dataset.createDataset(filter, country, saison)
@@ -352,8 +352,14 @@ if __name__ == '__main__':
     mainWindow = MainWindow()
     mainWindow.show()
     
-    for index, row in dataFrame.iterrows():
-        mainWindow.addPanel(row)
+    if filter == "product":
+        for index, row in dataFrame.iterrows():
+            mainWindow.addPanel(row)
+    elif filter == "category":
+        print("")
+        #for index, row in dataFrame.iterrows():
+        #    mainWindow.addPanel(row)
+
 
         
     sys.exit(app.exec_())

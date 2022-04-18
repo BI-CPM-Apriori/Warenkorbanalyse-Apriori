@@ -1,0 +1,205 @@
+{
+    "filters": [
+        {
+        "countryName": "All",
+        "saison": "All",
+        "params": [
+            {
+            "support": 0.05,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "All",
+        "saison": "Q1",
+        "params": [
+            {
+            "support": 0.025,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "All",
+        "saison": "Q2",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "All",
+        "saison": "Q3",
+        "params": [
+            {
+            "support": 0.025,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "All",
+        "saison": "Q4",
+        "params": [
+            {
+            "support": 0.025,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "North America",
+        "saison": "All",
+        "params": [
+            {
+            "support": 0.04,
+            "threshold": 4
+            }
+            ]
+        },
+        {
+        "countryName": "Europe",
+        "saison": "All",
+        "params": [
+            {
+            "support": 0.025,
+            "threshold": 4
+            }
+            ]
+        },
+        {
+        "countryName": "Pacific",
+        "saison": "All",
+        "params": [
+            {
+            "support": 0.025,
+            "threshold": 4
+            }
+            ]
+        },
+        {
+        "countryName": "North America",
+        "saison": "Q1",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "North America",
+        "saison": "Q2",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "North America",
+        "saison": "Q3",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "North America",
+        "saison": "Q4",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "Europe",
+        "saison": "Q1",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "Europe",
+        "saison": "Q2",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "Europe",
+        "saison": "Q3",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "Europe",
+        "saison": "Q4",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "Pacific",
+        "saison": "Q1",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "Pacific",
+        "saison": "Q2",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "Pacific",
+        "saison": "Q3",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        },
+        {
+        "countryName": "Pacific",
+        "saison": "Q4",
+        "params": [
+            {
+            "support": 0.03,
+            "threshold": 0
+            }
+            ]
+        }
+    ]
+        
+}
