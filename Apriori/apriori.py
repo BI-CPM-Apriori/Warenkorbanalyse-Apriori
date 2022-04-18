@@ -16,9 +16,10 @@ def getResult(ds, supp, threshold):
     result = rules[['antecedents','consequents','support','confidence','lift','conviction']]
     result.sort_values(by=['confidence'], ascending=False, inplace=True)
 
-    print(result)
+    
     size = int(result.index.size/2)
 
     result = result.iloc[:size, :]
-
+    print(result)
+    
     return result

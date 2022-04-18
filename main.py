@@ -327,8 +327,8 @@ class Ergebnissframe1zu1(QWidget):
 if __name__ == '__main__':
 
     filter = "product"
-    country = "Europe"
-    saison = "Q2"
+    country = "Pacific"
+    saison = "All"
 
     ds = dataset.createDataset(filter, country, saison)
 
