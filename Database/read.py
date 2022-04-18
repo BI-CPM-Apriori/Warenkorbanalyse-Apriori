@@ -3,10 +3,28 @@ def getProductName(productID):
 
     return sql
 
+def getCategoryName(categoryID):
+    sql = "SELECT [AdventureWorks2019].[Production].[ProductCategory].[Name] FROM [AdventureWorks2019].[Production].[ProductCategory] WHERE [AdventureWorks2019].[Production].[ProductCategory].[ProductCategoryID] =  " + str(categoryID) + ";"
+
+    return sql
+
 def getProductPhoto(productID):
     sql = "SELECT [AdventureWorks2019].[Production].[ProductPhoto].[LargePhoto] FROM [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductPhoto], [AdventureWorks2019].[Production].[ProductProductPhoto] WHERE [AdventureWorks2019].[Production].[Product].[ProductID] = [AdventureWorks2019].[Production].[ProductProductPhoto].ProductID AND [AdventureWorks2019].[Production].[ProductPhoto].[ProductPhotoID] = [AdventureWorks2019].[Production].[ProductProductPhoto].[ProductPhotoID] AND [AdventureWorks2019].[Production].[Product].[ProductID] = " + str(productID) + ";"
 
     return sql
+
+def getCategoryPhoto(categoryID):
+
+    if categoryID == 1:
+        path = "images/bikes.png"
+    elif categoryID == 2:
+        path = "images/components.png"
+    elif categoryID == 3:
+        path = "images/clothing.png"
+    else:
+        path = "images/accessories.png"
+
+    return path
 
 def getProductsAll():
     sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderDetail] ORDER BY [SalesOrderID] ASC;"

@@ -52,7 +52,7 @@ class MainWindow(QMainWindow):
         self.ui.btnDashboard.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dashboard))
         self.ui.btnAnalyse.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.analyse))
            
-    def addPanel(self, row):
+    def addPanelProducts(self, row):
         global counterlength
         counterlength += 1
         
@@ -202,7 +202,117 @@ class MainWindow(QMainWindow):
         #self.timer.timeout.connect(lambda: self.progress(frame,confidence))
         # TIMER IN MILLISECONDS
         #self.timer.start(15)
+
+    def addPanelCategories(self, row):
+        global counterlength
+        counterlength += 1
         
+        conn = dbConnection.openConn()
+        cursor = conn.cursor()
+        
+        if (len(list(row['antecedents'])) == 2 and len(list(row['consequents'])) == 1):
+            
+            frame = Ergebnissframe(self)
+
+            pixmap = QPixmap(read.getCategoryPhoto(list(row['antecedents'])[0]))
+            frame.ui.photo.setPixmap(pixmap)       
+            
+            pixmap1 = QPixmap(read.getCategoryPhoto(list(row['antecedents'])[1]))
+            frame.ui.photo2.setPixmap(pixmap1)   
+            
+            pixmap2 = QPixmap(read.getCategoryPhoto(list(row['consequents'])[0]))
+            frame.ui.photo3.setPixmap(pixmap2)
+            
+            frame.ui.produkt1.setText(str(cursor.execute(read.getCategoryName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getCategoryName(list(row['antecedents'])[1])).fetchone()[0]))
+            frame.ui.produkt3.setText(str(cursor.execute(read.getCategoryName(list(row['consequents'])[0])).fetchone()[0]))
+              
+        elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 2):
+            frame = Ergebnissframe1zu2(self)
+            
+            pixmap = QPixmap(read.getCategoryPhoto(list(row['antecedents'])[0]))
+            frame.ui.photo.setPixmap(pixmap)       
+            
+            pixmap1 = QPixmap(read.getCategoryPhoto(list(row['consequents'])[0]))
+            frame.ui.photo2.setPixmap(pixmap1)   
+            
+            pixmap2 = QPixmap(read.getCategoryPhoto(list(row['consequents'])[1]))
+            frame.ui.photo3.setPixmap(pixmap2)
+            
+            frame.ui.produkt1.setText(str(cursor.execute(read.getCategoryName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getCategoryName(list(row['consequents'])[0])).fetchone()[0]))
+            frame.ui.produkt3.setText(str(cursor.execute(read.getCategoryName(list(row['consequents'])[1])).fetchone()[0]))
+            
+        elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 1):
+            frame = Ergebnissframe1zu1(self)
+            
+            pixmap = QPixmap(read.getCategoryPhoto(list(row['antecedents'])[0]))
+            frame.ui.photo.setPixmap(pixmap)       
+            
+            pixmap1 = QPixmap(read.getCategoryPhoto(list(row['consequents'])[0]))
+            frame.ui.photo2.setPixmap(pixmap1)   
+            
+            
+            frame.ui.produkt1.setText(str(cursor.execute(read.getCategoryName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getCategoryName(list(row['consequents'])[0])).fetchone()[0]))
+            
+        confidence = round(int((row['confidence']) * 100 ),0)
+       
+        frame.ui.labelSupport.setText(str(round(float((row['support']) * 100 ),2))+ "%")
+        frame.ui.labelLift.setText(str(round((row['lift'] ),2)))
+        frame.ui.labelConf.setText(str(round((row['conviction'] ),2)))
+        
+        shadow = QGraphicsDropShadowEffect(self)
+        shadow.setBlurRadius(20)
+        shadow.setXOffset(0)
+        shadow.setYOffset(0)
+        shadow.setColor(QColor(0, 0, 0, 60))
+        frame.setGraphicsEffect(shadow)
+        
+        self.ui.results.addWidget(frame)
+        
+        if counterlength == lengthFrame:
+            self.ui.results.addStretch()
+            counterlength = 0
+            
+        
+        frame.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame,70,270,True))
+        
+        htmlText = """<p><span style=" font-size:25pt;">{VALUE}</span><span style=" font-size:22pt; vertical-align:center;">%</span></p>"""
+
+        # REPLACE VALUE
+        newHtml = htmlText.replace("{VALUE}", str(confidence))
+
+        frame.ui.labelConfidence.setText(newHtml)
+                
+        # PROGRESSBAR STYLESHEET BASE
+        styleSheet = """
+        QFrame{
+        	border-radius: 70px;
+            background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{STOP_1} rgba(255, 255, 255, 0), stop:{STOP_2} rgba(13, 72, 72, 255));
+        }
+        """
+
+        # GET PROGRESS BAR VALUE, CONVERT TO FLOAT AND INVERT VALUES
+        # stop works of 1.000 to 0.000
+        progress = (100 - confidence) / 100.0
+
+        # GET NEW VALUES
+        stop_1 = str(progress - 0.001)
+        stop_2 = str(progress)
+
+        # SET VALUES TO NEW STYLESHEET
+        newStylesheet = styleSheet.replace("{STOP_1}", stop_1).replace("{STOP_2}", stop_2)
+      
+
+        # APPLY STYLESHEET WITH NEW VALUES
+        frame.ui.progressKreis.setStyleSheet(newStylesheet)
+        
+         ## QTIMER ==> START
+        #self.timer = QtCore.QTimer()
+        #self.timer.timeout.connect(lambda: self.progress(frame,confidence))
+        # TIMER IN MILLISECONDS
+        #self.timer.start(15) 
         
     def progress (self,frame,confidence):
         global counter
@@ -326,7 +436,7 @@ class Ergebnissframe1zu1(QWidget):
 
 if __name__ == '__main__':
 
-    filter = "product"
+    filter = "category"
     country = "All"
     saison = "All"
 
@@ -354,11 +464,10 @@ if __name__ == '__main__':
     
     if filter == "product":
         for index, row in dataFrame.iterrows():
-            mainWindow.addPanel(row)
+            mainWindow.addPanelProducts(row)
     elif filter == "category":
-        print("")
-        #for index, row in dataFrame.iterrows():
-        #    mainWindow.addPanel(row)
+        for index, row in dataFrame.iterrows():
+            mainWindow.addPanelCategories(row)
 
 
         
