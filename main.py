@@ -326,8 +326,8 @@ class Ergebnissframe1zu1(QWidget):
 if __name__ == '__main__':
 
     # Param 
-    # 1 = Produkte, 2 = Kategorien
-    param = "1"
+    # 1 = ProductsAll, 2 = ProductsByCountry, 2 = CategoriesAll
+    param = "2"
     ds = dataset.createDataset(param)
     
     dataFrame = apriori.getResult(ds, param)

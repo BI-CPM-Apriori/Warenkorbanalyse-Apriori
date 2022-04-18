@@ -1,0 +1,185 @@
+{
+    "filters": [
+        {
+        "id": "00",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "01",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "02",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "03",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "04",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "10",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "20",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "30",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "11",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "12",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "13",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "14",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "21",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "22",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "23",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "24",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "31",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "32",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "33",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        },
+        {
+        "id": "34",
+        "params": [
+            {
+            "support": "",
+            "threshold": ""
+            }
+            ]
+        }
+    ]
+        
+}
