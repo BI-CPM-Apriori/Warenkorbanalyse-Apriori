@@ -1,6 +1,6 @@
 from Database import dbConnection, read
 
-def createDataset(filter, country, countryID, saison):
+def createDataset(filter, country, saison):
     dataset = []
     innerList = []
 
@@ -12,18 +12,18 @@ def createDataset(filter, country, countryID, saison):
         elif country == "All":
             sql = read.getProductsBySaison(saison)
         elif saison == "All":
-            sql = read.getProductsByCountry(countryID)
+            sql = read.getProductsByCountry(country)
         else:
-            sql = read.getProductsByCountryAndSaison(countryID, saison)
+            sql = read.getProductsByCountryAndSaison(country, saison)
     else:
         if country == "All" and saison == "All":
             sql = read.getCategoriesAll()
         elif country == "All":
             sql = read.getCategoriesBySaison(saison)
         elif saison == "All":
-            sql = read.getCategoriesByCountry(countryID)
+            sql = read.getCategoriesByCountry(country)
         else:
-            sql = read.getCategoriesByCountryAndSaison(countryID, saison)
+            sql = read.getCategoriesByCountryAndSaison(country, saison)
             
 
 

@@ -330,6 +330,8 @@ if __name__ == '__main__':
     country = "Europe"
     saison = "Q2"
 
+    ds = dataset.createDataset(filter, country, saison)
+
     if filter == "product":
         with open('Apriori/filterProducts.json','r') as file:
             obj = json.load(file)
@@ -339,11 +341,10 @@ if __name__ == '__main__':
 
     for i in obj['filters']:
         if i["countryName"] == country and i['saison'] == saison:
-            countryID = i['params'][0]['countryID']
             supp = i['params'][0]['support']
             threshold = i['params'][0]['threshold']
 
-    ds = dataset.createDataset(filter, country, countryID, saison)
+    
     dataFrame = apriori.getResult(ds, supp, threshold)
     lengthFrame = int(dataFrame.index.size)
     
