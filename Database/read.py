@@ -32,7 +32,7 @@ def getProductsAll():
     return sql
 
 def getProductsByCountry(country):
-    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID]  AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + getCountryID(country) + ") ORDER BY [SalesOrderID] ASC;"
+    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID] AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + getCountryID(country) + ") ORDER BY [SalesOrderID] ASC;"
 
     return sql
 
@@ -44,7 +44,7 @@ def getProductsBySaison(saison):
 
 def getProductsByCountryAndSaison(country, saison):
 
-    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID]  AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + getCountryID(country) + ") AND ("+ getQuartal(saison) +") ORDER BY [SalesOrderID] ASC;"
+    sql = "SELECT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID] AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + getCountryID(country) + ") AND ("+ getQuartal(saison) +") ORDER BY [SalesOrderID] ASC;"
 
     return sql
 
@@ -54,17 +54,17 @@ def getCategoriesAll():
     return sql
 
 def getCategoriesByCountry(country):
-    sql = "SELECT DISTINCT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[ProductSubcategory].[Name] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductSubcategory] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID] AND [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] AND [AdventureWorks2019].[Production].[Product].[ProductSubcategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductSubcategoryID] AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + getCountryID(country) + ") ORDER BY [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] ASC;"
+    sql = "SELECT DISTINCT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[ProductCategory].[ProductCategoryID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductSubcategory], [AdventureWorks2019].[Production].[ProductCategory] WHERE [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] AND [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] AND [AdventureWorks2019].[Production].[Product].[ProductSubcategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductSubcategoryID] AND [AdventureWorks2019].[Production].[ProductCategory].[ProductCategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductCategoryID] AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + getCountryID(country) + ") ORDER BY [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] ASC;"
 
     return sql
 
 def getCategoriesBySaison(saison):
-    sql = ""
+    sql = "SELECT DISTINCT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[ProductCategory].[ProductCategoryID] FROM [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductSubcategory], [AdventureWorks2019].[Production].[ProductCategory] WHERE [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] AND [AdventureWorks2019].[Production].[Product].[ProductSubcategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductSubcategoryID] AND [AdventureWorks2019].[Production].[ProductCategory].[ProductCategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductCategoryID] AND (" + getQuartal(saison) + ") ORDER BY [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] ASC;"
 
     return sql
 
 def getCategoriesByCountryAndSaison(country,saison):
-    sql = ""
+    sql = "SELECT DISTINCT [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID], [AdventureWorks2019].[Production].[ProductCategory].[ProductCategoryID] FROM [AdventureWorks2019].[Sales].[SalesOrderHeader], [AdventureWorks2019].[Sales].[SalesOrderDetail], [AdventureWorks2019].[Production].[Product], [AdventureWorks2019].[Production].[ProductSubcategory], [AdventureWorks2019].[Production].[ProductCategory] WHERE [AdventureWorks2019].[Sales].[SalesOrderHeader].[SalesOrderID] = [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] AND [AdventureWorks2019].[Sales].[SalesOrderDetail].[ProductID] = [AdventureWorks2019].[Production].[Product].[ProductID] AND [AdventureWorks2019].[Production].[Product].[ProductSubcategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductSubcategoryID] AND [AdventureWorks2019].[Production].[ProductCategory].[ProductCategoryID] = [AdventureWorks2019].[Production].[ProductSubcategory].[ProductCategoryID] AND [AdventureWorks2019].[Sales].[SalesOrderHeader].[TerritoryID] IN(" + getCountryID(country) + ") AND (" + getQuartal(saison) + ") ORDER BY [AdventureWorks2019].[Sales].[SalesOrderDetail].[SalesOrderID] ASC;"
 
     return sql
 

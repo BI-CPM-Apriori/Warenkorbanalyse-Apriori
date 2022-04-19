@@ -1,3 +1,4 @@
+from ast import Index
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTimer, QUrl, Qt, QEvent)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
@@ -437,8 +438,8 @@ class Ergebnissframe1zu1(QWidget):
 if __name__ == '__main__':
 
     filter = "category"
-    country = "All"
-    saison = "All"
+    country = "Pacific"
+    saison = "Q2"
 
     ds = dataset.createDataset(filter, country, saison)
 
