@@ -38,7 +38,13 @@ class MainWindow(QMainWindow):
         self.showMaximized()
         
         #frame.clicked.connect(self.testing)
-  
+        shadow = QGraphicsDropShadowEffect(self)
+        shadow.setBlurRadius(20)
+        shadow.setXOffset(0)
+        shadow.setYOffset(0)
+        shadow.setColor(QColor(0, 0, 0, 60))
+        self.ui.frame_7.setGraphicsEffect(shadow)
+        
         
         #Define UI action
         self.ui.closeEvent = self.closeEvent
@@ -437,12 +443,12 @@ class Ergebnissframe1zu1(QWidget):
 
 if __name__ == '__main__':
 
-    filter = "category"
+    filter = "product"
     country = "All"
     saison = "All"
-    singleAnalyse = True
-    minSupport= 0.04
-    minConfidence = 0.75
+    singleAnalyse = False
+    minSupport= 0.025
+    minConfidence = 0.5
 
 
     ds = dataset.createDataset(filter, country, saison)
