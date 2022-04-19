@@ -131,7 +131,7 @@ class Ui_MainWindow(object):
 "background-color:rgb(170, 0, 0);\n"
 "}")
         icon2 = QIcon()
-        icon2.addFile(u"../images/x.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u"images/x.png", QSize(), QIcon.Normal, QIcon.Off)
         self.exitButton.setIcon(icon2)
 
         self.horizontalLayout_2.addWidget(self.buttons)
@@ -191,7 +191,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon3 = QIcon()
-        icon3.addFile(u"../images/HamburgerButton.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u"images/HamburgerButton.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnToggle.setIcon(icon3)
         self.btnToggle.setIconSize(QSize(16, 16))
         self.btnToggle.setToolButtonStyle(Qt.ToolButtonIconOnly)
@@ -226,7 +226,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon4 = QIcon()
-        icon4.addFile(u"../images/Home.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u"images/Home.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnAnalyse.setIcon(icon4)
         self.btnAnalyse.setIconSize(QSize(18, 18))
         self.btnAnalyse.setToolButtonStyle(Qt.ToolButtonIconOnly)
@@ -263,7 +263,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon5 = QIcon()
-        icon5.addFile(u"../images/Analyse.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u"images/Analyse.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnDashboard.setIcon(icon5)
         self.btnDashboard.setIconSize(QSize(18, 18))
         self.btnDashboard.setToolButtonStyle(Qt.ToolButtonIconOnly)
@@ -317,7 +317,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon6 = QIcon()
-        icon6.addFile(u"../images/Einstellungen.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(u"images/Einstellungen.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnSettings.setIcon(icon6)
         self.btnSettings.setIconSize(QSize(18, 18))
         self.btnSettings.setToolButtonStyle(Qt.ToolButtonIconOnly)
@@ -353,7 +353,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon7 = QIcon()
-        icon7.addFile(u"../images/help-24.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(u"images/help-24.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnHelp.setIcon(icon7)
 
         self.verticalLayout_3.addWidget(self.btnHelp)
