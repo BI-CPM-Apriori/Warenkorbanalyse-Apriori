@@ -446,10 +446,10 @@ if __name__ == '__main__':
     filter = "category"
     country = "All"
     saison = "All"
-    singleAnalyse = False
+    allowItemsets = False
     minSupport= 0.025
     minConfidence = 0.5
-    sortedBy = "confidence"
+    sortedBy = "lift"
 
 
     ds = dataset.createDataset(filter, country, saison)
@@ -467,7 +467,7 @@ if __name__ == '__main__':
     #        minConfidence = i['params'][0]['threshold']
 
     
-    dataFrame = apriori.getResult(ds, minSupport, minConfidence, sortedBy, singleAnalyse)
+    dataFrame = apriori.getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets)
     lengthFrame = int(dataFrame.index.size)
     
     app = QApplication(sys.argv)

@@ -3,7 +3,7 @@ from mlxtend.preprocessing import TransactionEncoder
 from numpy import signedinteger
 import pandas as pd
     
-def getResult(ds, minSupport, minConfidence, sortedBy, singleAnalyse):
+def getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets):
     te = TransactionEncoder()
     te_ary = te.fit_transform(ds)
     df = pd.DataFrame(te_ary, columns=te.columns_)
@@ -11,7 +11,7 @@ def getResult(ds, minSupport, minConfidence, sortedBy, singleAnalyse):
     frequent_itemsets = apriori(df,min_support=minSupport,use_colnames=True)
     frequent_itemsets['length'] = frequent_itemsets['itemsets'].apply(lambda x: len(x))
 
-    if singleAnalyse == True:
+    if allowItemsets == True:
         frequent_itemsets = frequent_itemsets[(frequent_itemsets['length'] < 3)]
     else:
          frequent_itemsets = frequent_itemsets[(frequent_itemsets['length'] < 4)]
