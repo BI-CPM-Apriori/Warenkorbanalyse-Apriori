@@ -3,7 +3,7 @@ from mlxtend.preprocessing import TransactionEncoder
 from numpy import signedinteger
 import pandas as pd
     
-def getResult(ds, minSupport, minConfidence, singleAnalyse = False):
+def getResult(ds, minSupport, minConfidence, sortedBy, singleAnalyse):
     te = TransactionEncoder()
     te_ary = te.fit_transform(ds)
     df = pd.DataFrame(te_ary, columns=te.columns_)
@@ -21,12 +21,12 @@ def getResult(ds, minSupport, minConfidence, singleAnalyse = False):
     rules = association_rules(frequent_itemsets,metric='confidence',min_threshold=minConfidence)
 
     result = rules[['antecedents','consequents','support','confidence','lift','conviction']]
-    result.sort_values(by=['confidence'], ascending=False, inplace=True)
+    result.sort_values(by=[sortedBy], ascending=False, inplace=True)
 
     
    # size = int(result.index.size/2)
 
     #result = result.iloc[:size, :]
-    print(result)
+    #print(result)
 
     return result

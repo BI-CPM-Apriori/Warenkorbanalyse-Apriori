@@ -443,12 +443,13 @@ class Ergebnissframe1zu1(QWidget):
 
 if __name__ == '__main__':
 
-    filter = "product"
+    filter = "category"
     country = "All"
     saison = "All"
     singleAnalyse = False
     minSupport= 0.025
     minConfidence = 0.5
+    sortedBy = "confidence"
 
 
     ds = dataset.createDataset(filter, country, saison)
@@ -466,7 +467,7 @@ if __name__ == '__main__':
     #        minConfidence = i['params'][0]['threshold']
 
     
-    dataFrame = apriori.getResult(ds, minSupport, minConfidence, singleAnalyse)
+    dataFrame = apriori.getResult(ds, minSupport, minConfidence, sortedBy, singleAnalyse)
     lengthFrame = int(dataFrame.index.size)
     
     app = QApplication(sys.argv)
