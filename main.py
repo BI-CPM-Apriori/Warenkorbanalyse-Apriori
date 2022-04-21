@@ -120,9 +120,7 @@ class MainWindow(QMainWindow):
         #reset Buttons
         self.resetButtons(self.btnJahreszeiten)
         self.resetButtons(self.btnStandorte)
-        
-        self.minimize()
-        self.maximize()
+
         
         
     def resetButtons(self,btns):
