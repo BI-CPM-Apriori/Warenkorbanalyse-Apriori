@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1355, 846)
+        MainWindow.resize(1515, 846)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -104,7 +104,7 @@ class Ui_MainWindow(object):
 "\n"
 "}")
         icon = QIcon()
-        icon.addFile(u"../images/unterstrich.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"images/unterstrich.png", QSize(), QIcon.Normal, QIcon.Off)
         self.minimizeButton.setIcon(icon)
         self.maximizeButton = QPushButton(self.buttons)
         self.maximizeButton.setObjectName(u"maximizeButton")
@@ -406,7 +406,7 @@ class Ui_MainWindow(object):
         self.frame_7.setSizePolicy(sizePolicy1)
         self.frame_7.setMinimumSize(QSize(0, 140))
         self.frame_7.setMaximumSize(QSize(16777215, 140))
-        self.frame_7.setStyleSheet(u"background-color: rgb(32, 58, 67);")
+        self.frame_7.setStyleSheet(u"background-color: #052f2b;")
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_7)
@@ -415,13 +415,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.frame_8 = QFrame(self.frame_7)
         self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setMaximumSize(QSize(150, 16777215))
+        self.frame_8.setMaximumSize(QSize(140, 16777215))
         self.frame_8.setFrameShape(QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.verticalLayout_13 = QVBoxLayout(self.frame_8)
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(-1, 2, -1, -1)
+        self.verticalLayout_13.setContentsMargins(-1, 2, -1, 11)
         self.frame_13 = QFrame(self.frame_8)
         self.frame_13.setObjectName(u"frame_13")
         self.frame_13.setMaximumSize(QSize(16777215, 20))
@@ -449,23 +449,32 @@ class Ui_MainWindow(object):
         self.frame_14.setFrameShape(QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QFrame.Raised)
         self.verticalLayout_24 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_24.setSpacing(11)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.radioButton = QRadioButton(self.frame_14)
-        self.radioButton.setObjectName(u"radioButton")
+        self.verticalLayout_24.setContentsMargins(-1, -1, 0, -1)
+        self.rbProducts = QRadioButton(self.frame_14)
+        self.rbProducts.setObjectName(u"rbProducts")
         font3 = QFont()
         font3.setFamilies([u"Bahnschrift Light Condensed"])
         font3.setPointSize(11)
-        self.radioButton.setFont(font3)
-        self.radioButton.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.rbProducts.setFont(font3)
+        self.rbProducts.setStyleSheet(u"color: rgb(255, 255, 255);")
 
-        self.verticalLayout_24.addWidget(self.radioButton)
+        self.verticalLayout_24.addWidget(self.rbProducts)
 
-        self.radioButton_2 = QRadioButton(self.frame_14)
-        self.radioButton_2.setObjectName(u"radioButton_2")
-        self.radioButton_2.setFont(font3)
-        self.radioButton_2.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.rbCategory = QRadioButton(self.frame_14)
+        self.rbCategory.setObjectName(u"rbCategory")
+        self.rbCategory.setFont(font3)
+        self.rbCategory.setStyleSheet(u"color: rgb(255, 255, 255);")
 
-        self.verticalLayout_24.addWidget(self.radioButton_2)
+        self.verticalLayout_24.addWidget(self.rbCategory)
+
+        self.checkBoxItems = QCheckBox(self.frame_14)
+        self.checkBoxItems.setObjectName(u"checkBoxItems")
+        self.checkBoxItems.setFont(font3)
+        self.checkBoxItems.setStyleSheet(u"color:white;")
+
+        self.verticalLayout_24.addWidget(self.checkBoxItems)
 
 
         self.verticalLayout_13.addWidget(self.frame_14)
@@ -507,14 +516,15 @@ class Ui_MainWindow(object):
         self.frame_30.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_30)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(-1, -1, -1, 0)
-        self.spinBox = QSpinBox(self.frame_30)
-        self.spinBox.setObjectName(u"spinBox")
-        self.spinBox.setMaximumSize(QSize(40, 16777215))
-        self.spinBox.setStyleSheet(u"color: black;\n"
+        self.horizontalLayout_9.setContentsMargins(0, -1, 22, 0)
+        self.spinBoxSupport = QSpinBox(self.frame_30)
+        self.spinBoxSupport.setObjectName(u"spinBoxSupport")
+        self.spinBoxSupport.setMinimumSize(QSize(45, 0))
+        self.spinBoxSupport.setMaximumSize(QSize(45, 16777215))
+        self.spinBoxSupport.setStyleSheet(u"color: black;\n"
 "background-color: white;")
 
-        self.horizontalLayout_9.addWidget(self.spinBox)
+        self.horizontalLayout_9.addWidget(self.spinBoxSupport)
 
         self.label_7 = QLabel(self.frame_30)
         self.label_7.setObjectName(u"label_7")
@@ -534,15 +544,15 @@ class Ui_MainWindow(object):
         self.frame_31.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_10 = QHBoxLayout(self.frame_31)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(-1, 1, -1, -1)
-        self.spinBox_2 = QSpinBox(self.frame_31)
-        self.spinBox_2.setObjectName(u"spinBox_2")
-        self.spinBox_2.setMinimumSize(QSize(40, 0))
-        self.spinBox_2.setMaximumSize(QSize(40, 16777215))
-        self.spinBox_2.setStyleSheet(u"color: black;\n"
+        self.horizontalLayout_10.setContentsMargins(0, 1, 18, -1)
+        self.spinBoxConfidence = QSpinBox(self.frame_31)
+        self.spinBoxConfidence.setObjectName(u"spinBoxConfidence")
+        self.spinBoxConfidence.setMinimumSize(QSize(45, 0))
+        self.spinBoxConfidence.setMaximumSize(QSize(45, 16777215))
+        self.spinBoxConfidence.setStyleSheet(u"color: black;\n"
 "background-color: white;")
 
-        self.horizontalLayout_10.addWidget(self.spinBox_2)
+        self.horizontalLayout_10.addWidget(self.spinBoxConfidence)
 
         self.label_8 = QLabel(self.frame_31)
         self.label_8.setObjectName(u"label_8")
@@ -568,7 +578,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_16 = QVBoxLayout(self.frame_10)
         self.verticalLayout_16.setSpacing(0)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.verticalLayout_16.setContentsMargins(-1, 2, -1, -1)
+        self.verticalLayout_16.setContentsMargins(-1, 2, 0, -1)
         self.label_5 = QLabel(self.frame_10)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setMaximumSize(QSize(16777215, 20))
@@ -579,116 +589,119 @@ class Ui_MainWindow(object):
 
         self.frame_16 = QFrame(self.frame_10)
         self.frame_16.setObjectName(u"frame_16")
-        self.frame_16.setMaximumSize(QSize(16777215, 93))
+        self.frame_16.setMaximumSize(QSize(16777215, 103))
         self.frame_16.setFrameShape(QFrame.NoFrame)
         self.frame_16.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_19 = QVBoxLayout(self.frame_16)
-        self.verticalLayout_19.setSpacing(0)
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
-        self.frame_24 = QFrame(self.frame_16)
-        self.frame_24.setObjectName(u"frame_24")
-        self.frame_24.setFrameShape(QFrame.NoFrame)
-        self.frame_24.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_7 = QHBoxLayout(self.frame_24)
-        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7 = QHBoxLayout(self.frame_16)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.frame_26 = QFrame(self.frame_24)
-        self.frame_26.setObjectName(u"frame_26")
-        self.frame_26.setMinimumSize(QSize(0, 48))
-        self.frame_26.setFrameShape(QFrame.NoFrame)
-        self.frame_26.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_20 = QVBoxLayout(self.frame_26)
-        self.verticalLayout_20.setSpacing(0)
-        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
-        self.pushButton = QPushButton(self.frame_26)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(0, 44))
-        self.pushButton.setFont(font3)
-        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet(u"color:white;")
+        self.btnAllCountries = QPushButton(self.frame_16)
+        self.btnAllCountries.setObjectName(u"btnAllCountries")
+        self.btnAllCountries.setMinimumSize(QSize(80, 80))
+        self.btnAllCountries.setMaximumSize(QSize(80, 80))
+        font4 = QFont()
+        font4.setFamilies([u"Bahnschrift Light Condensed"])
+        font4.setPointSize(20)
+        self.btnAllCountries.setFont(font4)
+        self.btnAllCountries.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnAllCountries.setFocusPolicy(Qt.ClickFocus)
+        self.btnAllCountries.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon8 = QIcon()
+        icon8.addFile(u"images/Globe.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnAllCountries.setIcon(icon8)
+        self.btnAllCountries.setIconSize(QSize(55, 55))
 
-        self.verticalLayout_20.addWidget(self.pushButton)
+        self.horizontalLayout_7.addWidget(self.btnAllCountries)
 
+        self.btnNorthAmerica = QPushButton(self.frame_16)
+        self.btnNorthAmerica.setObjectName(u"btnNorthAmerica")
+        self.btnNorthAmerica.setMinimumSize(QSize(80, 80))
+        self.btnNorthAmerica.setMaximumSize(QSize(80, 80))
+        self.btnNorthAmerica.setFont(font4)
+        self.btnNorthAmerica.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnNorthAmerica.setFocusPolicy(Qt.ClickFocus)
+        self.btnNorthAmerica.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon9 = QIcon()
+        icon9.addFile(u"images/North America.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnNorthAmerica.setIcon(icon9)
+        self.btnNorthAmerica.setIconSize(QSize(55, 55))
 
-        self.horizontalLayout_7.addWidget(self.frame_26)
+        self.horizontalLayout_7.addWidget(self.btnNorthAmerica)
 
-        self.frame_27 = QFrame(self.frame_24)
-        self.frame_27.setObjectName(u"frame_27")
-        self.frame_27.setMaximumSize(QSize(16777215, 44))
-        self.frame_27.setFrameShape(QFrame.NoFrame)
-        self.frame_27.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_21 = QVBoxLayout(self.frame_27)
-        self.verticalLayout_21.setSpacing(0)
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_2 = QPushButton(self.frame_27)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMinimumSize(QSize(0, 44))
-        self.pushButton_2.setFont(font3)
-        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet(u"color:white;")
+        self.btnEurope = QPushButton(self.frame_16)
+        self.btnEurope.setObjectName(u"btnEurope")
+        self.btnEurope.setMinimumSize(QSize(80, 80))
+        self.btnEurope.setMaximumSize(QSize(80, 80))
+        self.btnEurope.setFont(font4)
+        self.btnEurope.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnEurope.setFocusPolicy(Qt.ClickFocus)
+        self.btnEurope.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon10 = QIcon()
+        icon10.addFile(u"images/Europe.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnEurope.setIcon(icon10)
+        self.btnEurope.setIconSize(QSize(55, 55))
 
-        self.verticalLayout_21.addWidget(self.pushButton_2)
+        self.horizontalLayout_7.addWidget(self.btnEurope)
 
+        self.btnPacific = QPushButton(self.frame_16)
+        self.btnPacific.setObjectName(u"btnPacific")
+        self.btnPacific.setMinimumSize(QSize(80, 80))
+        self.btnPacific.setMaximumSize(QSize(80, 80))
+        self.btnPacific.setFont(font4)
+        self.btnPacific.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnPacific.setFocusPolicy(Qt.ClickFocus)
+        self.btnPacific.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon11 = QIcon()
+        icon11.addFile(u"images/Pacific.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnPacific.setIcon(icon11)
+        self.btnPacific.setIconSize(QSize(55, 55))
 
-        self.horizontalLayout_7.addWidget(self.frame_27)
-
-
-        self.verticalLayout_19.addWidget(self.frame_24)
-
-        self.frame_25 = QFrame(self.frame_16)
-        self.frame_25.setObjectName(u"frame_25")
-        self.frame_25.setFrameShape(QFrame.NoFrame)
-        self.frame_25.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_8 = QHBoxLayout(self.frame_25)
-        self.horizontalLayout_8.setSpacing(0)
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.frame_28 = QFrame(self.frame_25)
-        self.frame_28.setObjectName(u"frame_28")
-        self.frame_28.setFrameShape(QFrame.NoFrame)
-        self.frame_28.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_23 = QVBoxLayout(self.frame_28)
-        self.verticalLayout_23.setSpacing(0)
-        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.verticalLayout_23.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_3 = QPushButton(self.frame_28)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMinimumSize(QSize(0, 44))
-        self.pushButton_3.setFont(font3)
-        self.pushButton_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_3.setStyleSheet(u"color:white;")
-
-        self.verticalLayout_23.addWidget(self.pushButton_3)
-
-
-        self.horizontalLayout_8.addWidget(self.frame_28)
-
-        self.frame_29 = QFrame(self.frame_25)
-        self.frame_29.setObjectName(u"frame_29")
-        self.frame_29.setFrameShape(QFrame.NoFrame)
-        self.frame_29.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_22 = QVBoxLayout(self.frame_29)
-        self.verticalLayout_22.setSpacing(0)
-        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
-        self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_4 = QPushButton(self.frame_29)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setMinimumSize(QSize(0, 44))
-        self.pushButton_4.setFont(font3)
-        self.pushButton_4.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_4.setStyleSheet(u"color:white;")
-
-        self.verticalLayout_22.addWidget(self.pushButton_4)
-
-
-        self.horizontalLayout_8.addWidget(self.frame_29)
-
-
-        self.verticalLayout_19.addWidget(self.frame_25)
+        self.horizontalLayout_7.addWidget(self.btnPacific)
 
 
         self.verticalLayout_16.addWidget(self.frame_16)
@@ -703,7 +716,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_17 = QVBoxLayout(self.frame_11)
         self.verticalLayout_17.setSpacing(0)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.verticalLayout_17.setContentsMargins(0, 2, -1, -1)
+        self.verticalLayout_17.setContentsMargins(11, 2, -1, -1)
         self.label_6 = QLabel(self.frame_11)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setMaximumSize(QSize(16777215, 20))
@@ -715,62 +728,139 @@ class Ui_MainWindow(object):
 
         self.frame_17 = QFrame(self.frame_11)
         self.frame_17.setObjectName(u"frame_17")
+        self.frame_17.setMaximumSize(QSize(16777215, 103))
         self.frame_17.setAutoFillBackground(False)
         self.frame_17.setStyleSheet(u"border-left:1px solid white;\n"
 "border-right:1px solid white;")
-        self.frame_17.setFrameShape(QFrame.StyledPanel)
+        self.frame_17.setFrameShape(QFrame.NoFrame)
         self.frame_17.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_17)
-        self.horizontalLayout_5.setSpacing(0)
+        self.horizontalLayout_5.setSpacing(7)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.pushButton_9 = QPushButton(self.frame_17)
-        self.pushButton_9.setObjectName(u"pushButton_9")
-        self.pushButton_9.setMinimumSize(QSize(0, 80))
-        self.pushButton_9.setMaximumSize(QSize(80, 16777215))
-        font4 = QFont()
-        font4.setFamilies([u"Bahnschrift Light Condensed"])
-        font4.setPointSize(20)
-        self.pushButton_9.setFont(font4)
-        self.pushButton_9.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_9.setStyleSheet(u"color:white;")
+        self.horizontalLayout_5.setContentsMargins(22, -1, 22, -1)
+        self.btnJahreszeitenAll = QPushButton(self.frame_17)
+        self.btnJahreszeitenAll.setObjectName(u"btnJahreszeitenAll")
+        self.btnJahreszeitenAll.setMinimumSize(QSize(80, 80))
+        self.btnJahreszeitenAll.setMaximumSize(QSize(80, 80))
+        self.btnJahreszeitenAll.setFont(font4)
+        self.btnJahreszeitenAll.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnJahreszeitenAll.setFocusPolicy(Qt.ClickFocus)
+        self.btnJahreszeitenAll.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon12 = QIcon()
+        icon12.addFile(u"images/Jahreszeiten.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnJahreszeitenAll.setIcon(icon12)
+        self.btnJahreszeitenAll.setIconSize(QSize(55, 55))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_9)
+        self.horizontalLayout_5.addWidget(self.btnJahreszeitenAll)
 
-        self.pushButton_8 = QPushButton(self.frame_17)
-        self.pushButton_8.setObjectName(u"pushButton_8")
-        self.pushButton_8.setMinimumSize(QSize(0, 80))
-        self.pushButton_8.setMaximumSize(QSize(80, 16777215))
-        self.pushButton_8.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_8.setStyleSheet(u"color:white;")
+        self.btnFruehling = QPushButton(self.frame_17)
+        self.btnFruehling.setObjectName(u"btnFruehling")
+        self.btnFruehling.setMinimumSize(QSize(80, 80))
+        self.btnFruehling.setMaximumSize(QSize(80, 80))
+        self.btnFruehling.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnFruehling.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon13 = QIcon()
+        icon13.addFile(u"images/Astrology-Spring-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnFruehling.setIcon(icon13)
+        self.btnFruehling.setIconSize(QSize(55, 55))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_8)
+        self.horizontalLayout_5.addWidget(self.btnFruehling)
 
-        self.pushButton_5 = QPushButton(self.frame_17)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-        self.pushButton_5.setMinimumSize(QSize(0, 80))
-        self.pushButton_5.setMaximumSize(QSize(80, 16777215))
-        self.pushButton_5.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_5.setStyleSheet(u"color:white;")
+        self.btnSommer = QPushButton(self.frame_17)
+        self.btnSommer.setObjectName(u"btnSommer")
+        self.btnSommer.setMinimumSize(QSize(80, 80))
+        self.btnSommer.setMaximumSize(QSize(80, 80))
+        self.btnSommer.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnSommer.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon14 = QIcon()
+        icon14.addFile(u"images/Astrology-Summer-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnSommer.setIcon(icon14)
+        self.btnSommer.setIconSize(QSize(55, 55))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_5)
+        self.horizontalLayout_5.addWidget(self.btnSommer)
 
-        self.pushButton_7 = QPushButton(self.frame_17)
-        self.pushButton_7.setObjectName(u"pushButton_7")
-        self.pushButton_7.setMinimumSize(QSize(0, 80))
-        self.pushButton_7.setMaximumSize(QSize(80, 16777215))
-        self.pushButton_7.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_7.setStyleSheet(u"color:white;")
+        self.btnHerbst = QPushButton(self.frame_17)
+        self.btnHerbst.setObjectName(u"btnHerbst")
+        self.btnHerbst.setMinimumSize(QSize(80, 80))
+        self.btnHerbst.setMaximumSize(QSize(80, 80))
+        self.btnHerbst.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnHerbst.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon15 = QIcon()
+        icon15.addFile(u"images/Astrology-Autumn-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnHerbst.setIcon(icon15)
+        self.btnHerbst.setIconSize(QSize(55, 55))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_7)
+        self.horizontalLayout_5.addWidget(self.btnHerbst)
 
-        self.pushButton_6 = QPushButton(self.frame_17)
-        self.pushButton_6.setObjectName(u"pushButton_6")
-        self.pushButton_6.setMinimumSize(QSize(0, 80))
-        self.pushButton_6.setMaximumSize(QSize(80, 16777215))
-        self.pushButton_6.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_6.setStyleSheet(u"color:white;")
+        self.btnWinter = QPushButton(self.frame_17)
+        self.btnWinter.setObjectName(u"btnWinter")
+        self.btnWinter.setMinimumSize(QSize(80, 80))
+        self.btnWinter.setMaximumSize(QSize(80, 80))
+        self.btnWinter.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnWinter.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color:#010f0e ;\n"
+"}\n"
+"\n"
+"QPushButton:focus{\n"
+"background-color:#0b6d63  ;\n"
+"}\n"
+"\n"
+"")
+        icon16 = QIcon()
+        icon16.addFile(u"images/Astrology-Winter-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnWinter.setIcon(icon16)
+        self.btnWinter.setIconSize(QSize(55, 55))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_6)
+        self.horizontalLayout_5.addWidget(self.btnWinter)
 
 
         self.verticalLayout_17.addWidget(self.frame_17)
@@ -785,63 +875,106 @@ class Ui_MainWindow(object):
         self.verticalLayout_18 = QVBoxLayout(self.frame_12)
         self.verticalLayout_18.setSpacing(0)
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
-        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
-        self.frame_18 = QFrame(self.frame_12)
-        self.frame_18.setObjectName(u"frame_18")
-        self.frame_18.setFrameShape(QFrame.StyledPanel)
-        self.frame_18.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_12 = QHBoxLayout(self.frame_18)
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.pushButton_10 = QPushButton(self.frame_18)
-        self.pushButton_10.setObjectName(u"pushButton_10")
-
-        self.horizontalLayout_12.addWidget(self.pushButton_10)
-
-        self.label_9 = QLabel(self.frame_18)
-        self.label_9.setObjectName(u"label_9")
-
-        self.horizontalLayout_12.addWidget(self.label_9)
-
-
-        self.verticalLayout_18.addWidget(self.frame_18)
-
-        self.frame_20 = QFrame(self.frame_12)
-        self.frame_20.setObjectName(u"frame_20")
-        self.frame_20.setFrameShape(QFrame.StyledPanel)
-        self.frame_20.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_11 = QHBoxLayout(self.frame_20)
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.pushButton_11 = QPushButton(self.frame_20)
-        self.pushButton_11.setObjectName(u"pushButton_11")
-
-        self.horizontalLayout_11.addWidget(self.pushButton_11)
-
-        self.label_10 = QLabel(self.frame_20)
-        self.label_10.setObjectName(u"label_10")
-
-        self.horizontalLayout_11.addWidget(self.label_10)
-
-
-        self.verticalLayout_18.addWidget(self.frame_20)
-
+        self.verticalLayout_18.setContentsMargins(11, 11, 0, 11)
         self.frame_19 = QFrame(self.frame_12)
         self.frame_19.setObjectName(u"frame_19")
         self.frame_19.setFrameShape(QFrame.StyledPanel)
         self.frame_19.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_6 = QHBoxLayout(self.frame_19)
+        self.horizontalLayout_6.setSpacing(7)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.checkBox = QCheckBox(self.frame_19)
-        self.checkBox.setObjectName(u"checkBox")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.comboSortierung = QComboBox(self.frame_19)
+        self.comboSortierung.setObjectName(u"comboSortierung")
+        self.comboSortierung.setMinimumSize(QSize(130, 28))
+        self.comboSortierung.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
-        self.horizontalLayout_6.addWidget(self.checkBox)
+        self.horizontalLayout_6.addWidget(self.comboSortierung)
 
-        self.label_11 = QLabel(self.frame_19)
-        self.label_11.setObjectName(u"label_11")
+        self.label_12 = QLabel(self.frame_19)
+        self.label_12.setObjectName(u"label_12")
+        font5 = QFont()
+        font5.setFamilies([u"Bahnschrift Light Condensed"])
+        font5.setPointSize(14)
+        self.label_12.setFont(font5)
+        self.label_12.setStyleSheet(u"color:white;")
 
-        self.horizontalLayout_6.addWidget(self.label_11)
+        self.horizontalLayout_6.addWidget(self.label_12)
 
 
         self.verticalLayout_18.addWidget(self.frame_19)
+
+        self.frame_18 = QFrame(self.frame_12)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setFrameShape(QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_13 = QHBoxLayout(self.frame_18)
+        self.horizontalLayout_13.setSpacing(7)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.btnReset = QPushButton(self.frame_18)
+        self.btnReset.setObjectName(u"btnReset")
+        self.btnReset.setMinimumSize(QSize(0, 30))
+        self.btnReset.setMaximumSize(QSize(70, 16777215))
+        self.btnReset.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnReset.setFocusPolicy(Qt.ClickFocus)
+        self.btnReset.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color: rgb(170, 0, 0);\n"
+"}")
+        self.btnReset.setIcon(icon2)
+
+        self.horizontalLayout_13.addWidget(self.btnReset)
+
+        self.label_9 = QLabel(self.frame_18)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setFont(font3)
+        self.label_9.setStyleSheet(u"color:white;")
+
+        self.horizontalLayout_13.addWidget(self.label_9)
+
+
+        self.verticalLayout_18.addWidget(self.frame_18)
+
+        self.frame_21 = QFrame(self.frame_12)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_12 = QHBoxLayout(self.frame_21)
+        self.horizontalLayout_12.setSpacing(7)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.btnAccept = QPushButton(self.frame_21)
+        self.btnAccept.setObjectName(u"btnAccept")
+        self.btnAccept.setMinimumSize(QSize(0, 30))
+        self.btnAccept.setMaximumSize(QSize(70, 16777215))
+        self.btnAccept.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnAccept.setFocusPolicy(Qt.ClickFocus)
+        self.btnAccept.setStyleSheet(u"QPushButton{\n"
+"border:1px solid white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color: rgb(0, 100, 0);\n"
+"}")
+        icon17 = QIcon()
+        icon17.addFile(u"images/haken.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnAccept.setIcon(icon17)
+
+        self.horizontalLayout_12.addWidget(self.btnAccept)
+
+        self.label_10 = QLabel(self.frame_21)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setFont(font3)
+        self.label_10.setStyleSheet(u"color:white;")
+
+        self.horizontalLayout_12.addWidget(self.label_10)
+
+
+        self.verticalLayout_18.addWidget(self.frame_21)
 
 
         self.horizontalLayout_4.addWidget(self.frame_12)
@@ -869,7 +1002,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1239, 635))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1399, 635))
         sizePolicy.setHeightForWidth(self.scrollAreaWidgetContents.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContents.setSizePolicy(sizePolicy)
         self.verticalLayout_12 = QVBoxLayout(self.scrollAreaWidgetContents)
@@ -896,11 +1029,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.label_3 = QLabel(self.analyse)
         self.label_3.setObjectName(u"label_3")
-        font5 = QFont()
-        font5.setFamilies([u"Bahnschrift"])
-        font5.setPointSize(28)
-        font5.setBold(True)
-        self.label_3.setFont(font5)
+        font6 = QFont()
+        font6.setFamilies([u"Bahnschrift"])
+        font6.setPointSize(28)
+        font6.setBold(True)
+        self.label_3.setFont(font6)
         self.label_3.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_7.addWidget(self.label_3)
@@ -938,28 +1071,55 @@ class Ui_MainWindow(object):
         self.btnSettings.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.btnHelp.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Analyse", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"Produkte", None))
-        self.radioButton_2.setText(QCoreApplication.translate("MainWindow", u"Kategorie", None))
+        self.rbProducts.setText(QCoreApplication.translate("MainWindow", u"Products", None))
+        self.rbCategory.setText(QCoreApplication.translate("MainWindow", u"Category", None))
+        self.checkBoxItems.setText(QCoreApplication.translate("MainWindow", u"Show Itemsets", None))
         self.label_4.setText("")
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"min Support", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"min Confidence", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Standort", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"All", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"North America", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Europe", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Pacific", None))
+#if QT_CONFIG(tooltip)
+        self.btnAllCountries.setToolTip(QCoreApplication.translate("MainWindow", u"All Locations", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnAllCountries.setText("")
+#if QT_CONFIG(tooltip)
+        self.btnNorthAmerica.setToolTip(QCoreApplication.translate("MainWindow", u"North America", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnNorthAmerica.setText("")
+#if QT_CONFIG(tooltip)
+        self.btnEurope.setToolTip(QCoreApplication.translate("MainWindow", u"Europe", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnEurope.setText("")
+#if QT_CONFIG(tooltip)
+        self.btnPacific.setToolTip(QCoreApplication.translate("MainWindow", u"Pacific", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnPacific.setText("")
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Saison", None))
-        self.pushButton_9.setText(QCoreApplication.translate("MainWindow", u"All", None))
-        self.pushButton_8.setText(QCoreApplication.translate("MainWindow", u"All", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"All", None))
-        self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"All", None))
-        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"All", None))
-        self.pushButton_10.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.pushButton_11.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+#if QT_CONFIG(tooltip)
+        self.btnJahreszeitenAll.setToolTip(QCoreApplication.translate("MainWindow", u"All Seasons", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnJahreszeitenAll.setText("")
+#if QT_CONFIG(tooltip)
+        self.btnFruehling.setToolTip(QCoreApplication.translate("MainWindow", u"Spring", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnFruehling.setText("")
+#if QT_CONFIG(tooltip)
+        self.btnSommer.setToolTip(QCoreApplication.translate("MainWindow", u"Summer", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnSommer.setText("")
+#if QT_CONFIG(tooltip)
+        self.btnHerbst.setToolTip(QCoreApplication.translate("MainWindow", u"Autumn", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnHerbst.setText("")
+#if QT_CONFIG(tooltip)
+        self.btnWinter.setToolTip(QCoreApplication.translate("MainWindow", u"Winter", None))
+#endif // QT_CONFIG(tooltip)
+        self.btnWinter.setText("")
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Sortierung", None))
+        self.btnReset.setText("")
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Filter zur\u00fccksetzen", None))
+        self.btnAccept.setText("")
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Filter best\u00e4tigen", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Analyse", None))
     # retranslateUi
 

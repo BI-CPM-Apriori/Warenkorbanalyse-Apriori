@@ -45,6 +45,8 @@ class MainWindow(QMainWindow):
         shadow.setColor(QColor(0, 0, 0, 60))
         self.ui.frame_7.setGraphicsEffect(shadow)
         
+        #preset radioButton
+        self.ui.rbProducts.setChecked(True)
         
         #Define UI action
         self.ui.closeEvent = self.closeEvent
@@ -54,11 +56,126 @@ class MainWindow(QMainWindow):
 
         self.ui.btnToggle.clicked.connect(lambda bda: UIFunctions.toggleMenu(self,250,True))
         
-
+        #initialize Checkbox
+        self.ui.checkBoxItems.setChecked(True)
+        
+        #initialize SpinBox
+        self.ui.spinBoxConfidence.setSuffix("%")
+        self.ui.spinBoxConfidence.setValue(75)
+        self.ui.spinBoxSupport.setSuffix("%")
+        self.ui.spinBoxSupport.setValue(5)
+        
+        #initialize combobox
+        comboOptions = ["Confidence", "Support","Lift","Conviction"]
+        for option in comboOptions:
+            self.ui.comboSortierung.addItem(option)
+            self.ui.comboSortierung.setCurrentIndex(0)
+        
         #Change View (Pages)
         self.ui.btnDashboard.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dashboard))
         self.ui.btnAnalyse.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.analyse))
-           
+        
+        #initialize Standort Buttons
+        self.btnStandorte = [self.ui.btnAllCountries,self.ui.btnEurope,self.ui.btnPacific,self.ui.btnNorthAmerica]
+        self.ui.btnAllCountries.clicked.connect(self.focusButtonStandort)
+        self.ui.btnEurope.clicked.connect(self.focusButtonStandort)
+        self.ui.btnPacific.clicked.connect(self.focusButtonStandort)
+        self.ui.btnNorthAmerica.clicked.connect(self.focusButtonStandort)
+        self.ui.btnAllCountries.setStyleSheet("""QPushButton{
+                                                    border:3px solid white;
+                                                    background-color:#0b6d63  ;
+                                                    }
+                                                    """)
+        
+        #initialize Jahreszeit Buttons
+        self.btnJahreszeiten = [self.ui.btnJahreszeitenAll,self.ui.btnSommer,self.ui.btnFruehling,self.ui.btnHerbst,self.ui.btnWinter]
+        self.ui.btnJahreszeitenAll.clicked.connect(self.focusButtonJahreszeit)
+        self.ui.btnSommer.clicked.connect(self.focusButtonJahreszeit)
+        self.ui.btnFruehling.clicked.connect(self.focusButtonJahreszeit)
+        self.ui.btnHerbst.clicked.connect(self.focusButtonJahreszeit)
+        self.ui.btnWinter.clicked.connect(self.focusButtonJahreszeit)
+        self.ui.btnJahreszeitenAll.setStyleSheet("""QPushButton{
+                                                    border:3px solid white;
+                                                    background-color:#0b6d63  ;
+                                                    }
+                                                    """)
+
+        #initialize Filter Buttons
+        self.ui.btnReset.clicked.connect(self.resetFilter)
+        
+    def resetFilter(self):
+         #initialize Checkbox
+        self.ui.checkBoxItems.setChecked(True)
+        
+        #initialize SpinBox
+        self.ui.spinBoxConfidence.setValue(75)
+        self.ui.spinBoxSupport.setValue(5)
+        
+        #preset radioButton
+        self.ui.rbProducts.setChecked(True)
+        
+        #preset ComboBox Sortierung
+        self.ui.comboSortierung.setCurrentIndex(0)
+        
+        #reset Buttons
+        self.resetButtons(self.btnJahreszeiten)
+        self.resetButtons(self.btnStandorte)
+        
+        self.minimize()
+        self.maximize()
+        
+        
+    def resetButtons(self,btns):
+        for index,btn in enumerate(btns):
+            if index == 0:
+                btn.setStyleSheet("""QPushButton{
+                                                    border:3px solid white;
+                                                    background-color:#0b6d63  ;
+                                                    }
+                                                    """)
+            else:
+                btn.setStyleSheet("""QPushButton{
+                                                    border:1px solid white;
+                                                    background-color:#052f2b ;
+                                                    }
+                                                    QPushButton:hover{
+                                                    background-color:#010f0e ;
+                                                    }""")
+    
+    def focusButtonStandort(self):
+        for child in self.btnStandorte:
+            if self.sender().objectName()==child.objectName():
+                self.sender().setStyleSheet("""QPushButton{
+                                                    border:3px solid white;
+                                                    background-color:#0b6d63  ;
+                                                    }
+                                                    """)
+            else:
+                child.setStyleSheet("""QPushButton{
+                                                    border:1px solid white;
+                                                    background-color:#052f2b ;
+                                                    }
+                                                    QPushButton:hover{
+                                                    background-color:#010f0e ;
+                                                    }""")
+    
+    def focusButtonJahreszeit(self):
+        for child in self.btnJahreszeiten:
+            if self.sender().objectName()==child.objectName():
+                self.sender().setStyleSheet("""QPushButton{
+                                                    border:3px solid white;
+                                                    background-color:#0b6d63  ;
+                                                    }
+                                                    """)
+            else:
+                child.setStyleSheet("""QPushButton{
+                                                    border:1px solid white;
+                                                    background-color:#052f2b ;
+                                                    }
+                                                    QPushButton:hover{
+                                                    background-color:#010f0e ;
+                                                    }""")    
+            
     def addPanelProducts(self, row):
         global counterlength
         counterlength += 1
