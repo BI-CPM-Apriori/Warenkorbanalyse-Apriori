@@ -433,12 +433,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_24.addWidget(self.rbCategory)
 
-        self.checkBoxItems = QCheckBox(self.frame_14)
-        self.checkBoxItems.setObjectName(u"checkBoxItems")
-        self.checkBoxItems.setFont(font3)
-        self.checkBoxItems.setStyleSheet(u"color:white;")
+        self.rbSubcategory = QRadioButton(self.frame_14)
+        self.rbSubcategory.setObjectName(u"rbSubcategory")
+        self.rbSubcategory.setFont(font3)
+        self.rbSubcategory.setStyleSheet(u"color:white;")
 
-        self.verticalLayout_24.addWidget(self.checkBoxItems)
+        self.verticalLayout_24.addWidget(self.rbSubcategory)
 
 
         self.verticalLayout_13.addWidget(self.frame_14)
@@ -475,62 +475,83 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.setContentsMargins(0, 0, 0, 0)
         self.frame_30 = QFrame(self.frame_15)
         self.frame_30.setObjectName(u"frame_30")
+        self.frame_30.setMinimumSize(QSize(0, 34))
         self.frame_30.setStyleSheet(u"border-right:1px solid white;")
         self.frame_30.setFrameShape(QFrame.StyledPanel)
         self.frame_30.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_30)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(0, -1, 22, 0)
-        self.spinBoxSupport = QSpinBox(self.frame_30)
-        self.spinBoxSupport.setObjectName(u"spinBoxSupport")
-        self.spinBoxSupport.setMinimumSize(QSize(45, 0))
-        self.spinBoxSupport.setMaximumSize(QSize(45, 16777215))
-        self.spinBoxSupport.setStyleSheet(u"color: black;\n"
-"background-color: white;")
-
-        self.horizontalLayout_9.addWidget(self.spinBoxSupport)
-
-        self.label_7 = QLabel(self.frame_30)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setFont(font3)
-        self.label_7.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"border:0px;")
-
-        self.horizontalLayout_9.addWidget(self.label_7)
-
-
-        self.verticalLayout_25.addWidget(self.frame_30)
-
-        self.frame_31 = QFrame(self.frame_15)
-        self.frame_31.setObjectName(u"frame_31")
-        self.frame_31.setStyleSheet(u"border-right:1px solid white;")
-        self.frame_31.setFrameShape(QFrame.StyledPanel)
-        self.frame_31.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_10 = QHBoxLayout(self.frame_31)
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(0, 1, 18, -1)
-        self.spinBoxConfidence = QSpinBox(self.frame_31)
+        self.horizontalLayout_9.setContentsMargins(0, -1, 18, 0)
+        self.spinBoxConfidence = QSpinBox(self.frame_30)
         self.spinBoxConfidence.setObjectName(u"spinBoxConfidence")
         self.spinBoxConfidence.setMinimumSize(QSize(45, 0))
         self.spinBoxConfidence.setMaximumSize(QSize(45, 16777215))
         self.spinBoxConfidence.setStyleSheet(u"color: black;\n"
 "background-color: white;")
 
-        self.horizontalLayout_10.addWidget(self.spinBoxConfidence)
+        self.horizontalLayout_9.addWidget(self.spinBoxConfidence)
 
-        self.label_8 = QLabel(self.frame_31)
+        self.label_8 = QLabel(self.frame_30)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setFont(font3)
         self.label_8.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border:0px;")
 
-        self.horizontalLayout_10.addWidget(self.label_8)
+        self.horizontalLayout_9.addWidget(self.label_8)
+
+
+        self.verticalLayout_25.addWidget(self.frame_30)
+
+        self.frame_31 = QFrame(self.frame_15)
+        self.frame_31.setObjectName(u"frame_31")
+        self.frame_31.setMinimumSize(QSize(0, 34))
+        self.frame_31.setStyleSheet(u"border-right:1px solid white;")
+        self.frame_31.setFrameShape(QFrame.StyledPanel)
+        self.frame_31.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_31)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(0, 9, 18, 4)
+        self.spinBoxSupport = QSpinBox(self.frame_31)
+        self.spinBoxSupport.setObjectName(u"spinBoxSupport")
+        self.spinBoxSupport.setMinimumSize(QSize(45, 0))
+        self.spinBoxSupport.setMaximumSize(QSize(45, 16777215))
+        self.spinBoxSupport.setStyleSheet(u"color: black;\n"
+"background-color: white;")
+
+        self.horizontalLayout_10.addWidget(self.spinBoxSupport)
+
+        self.label_7 = QLabel(self.frame_31)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setFont(font3)
+        self.label_7.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border:0px;")
+
+        self.horizontalLayout_10.addWidget(self.label_7)
 
 
         self.verticalLayout_25.addWidget(self.frame_31)
 
 
         self.verticalLayout_15.addWidget(self.frame_15)
+
+        self.frame_20 = QFrame(self.frame_9)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setMinimumSize(QSize(0, 30))
+        self.frame_20.setStyleSheet(u"border-right:1px solid white;")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.frame_20)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(0, 1, 18, -1)
+        self.checkBoxItems = QCheckBox(self.frame_20)
+        self.checkBoxItems.setObjectName(u"checkBoxItems")
+        self.checkBoxItems.setFont(font3)
+        self.checkBoxItems.setStyleSheet(u"color:white;border:0px;")
+
+        self.horizontalLayout_8.addWidget(self.checkBoxItems)
+
+
+        self.verticalLayout_15.addWidget(self.frame_20)
 
 
         self.horizontalLayout_4.addWidget(self.frame_9)
@@ -1036,10 +1057,11 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
         self.rbProducts.setText(QCoreApplication.translate("MainWindow", u"Products", None))
         self.rbCategory.setText(QCoreApplication.translate("MainWindow", u"Category", None))
-        self.checkBoxItems.setText(QCoreApplication.translate("MainWindow", u"Show Itemsets", None))
+        self.rbSubcategory.setText(QCoreApplication.translate("MainWindow", u"Subcategory", None))
         self.label_4.setText("")
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"min Support", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"min Confidence", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"min Support", None))
+        self.checkBoxItems.setText(QCoreApplication.translate("MainWindow", u"Show Itemsets", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Locations", None))
 #if QT_CONFIG(tooltip)
         self.btnAllCountries.setToolTip(QCoreApplication.translate("MainWindow", u"All Locations", None))
