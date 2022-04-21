@@ -1,4 +1,5 @@
 from ast import Index
+from msilib.schema import CheckBox
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTimer, QUrl, Qt, QEvent)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
@@ -27,6 +28,9 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("")
         self.setAcceptDrops(True)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        
+        self.country = "All"
+        self.season = "All"
         
         self.flagMaxi = True
         self.initUI()
@@ -102,6 +106,7 @@ class MainWindow(QMainWindow):
 
         #initialize Filter Buttons
         self.ui.btnReset.clicked.connect(self.resetFilter)
+        self.ui.btnAccept.clicked.connect(self.deleteWidgets)
         
     def resetFilter(self):
          #initialize Checkbox
@@ -122,7 +127,80 @@ class MainWindow(QMainWindow):
         self.resetButtons(self.btnStandorte)
 
         
+    def deleteWidgets(self):
+        for i in reversed(range(self.ui.results.count())):
+            if self.ui.results.itemAt(i).__class__.__name__ != "QSpacerItem":
+                self.ui.results.itemAt(i).widget().setParent(None)
+            else:
+                self.ui.results.removeItem(self.ui.results.itemAt(i))
+        self.getParams()
         
+    def getParams(self):
+        filter = self.getFilter()
+        country = self.getCountry()
+        saison = self.getSeason()
+        allowItemsets = self.getItemset()
+        minSupport= self.getMinSupport()
+        minConfidence = self.getMinConfidence()
+        sortedBy = self.getSortedBy()
+   
+        ds = dataset.createDataset(filter, country, saison)
+
+        dataFrame = apriori.getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets)
+        lengthFrame = int(dataFrame.index.size)
+        
+        if filter == "product":
+            for index, row in dataFrame.iterrows():
+                self.addPanelProducts(row,lengthFrame)
+        elif filter == "category":
+            for index, row in dataFrame.iterrows():
+                self.addPanelCategories(row,lengthFrame)
+
+        
+    def getSortedBy(self):
+        return str(self.ui.comboSortierung.currentText()).lower()
+    
+    def getMinConfidence(self):
+        return self.ui.spinBoxConfidence.value()/100
+        
+    def getMinSupport(self):
+        return self.ui.spinBoxSupport.value()/100
+    
+    def getItemset(self):
+        return not self.ui.checkBoxItems.isChecked()
+    
+    def getFilter(self):
+        if self.ui.rbCategory.isChecked():
+            return "category"
+        else:
+            return "product"
+        
+    def getSeason(self):
+        self.btnJahreszeiten = [self.ui.btnJahreszeitenAll,self.ui.btnSommer,self.ui.btnFruehling,self.ui.btnHerbst,self.ui.btnWinter]
+        if(self.season == "btnJahreszeitenAll"):
+            self.season = "All"
+        elif (self.season == "btnSommer"):
+            self.season = "Q1"
+        elif (self.season == "btnFruehling"):
+            self.season = "Q2"
+        elif (self.season == "btnHerbst"):
+            self.season = "Q3"
+        elif (self.season == "btnWinter"):
+            self.season = "Q4"
+        return self.season
+    
+    def getCountry(self):
+        if(self.country == "btnNorthAmerica"):
+            self.country = "North America"
+        elif (self.country == "btnAllCountries"):
+            self.country = "All"
+        elif (self.country == "btnEurope"):
+            self.country = "Europe"
+        elif (self.country == "btnPacific"):
+            self.country = "Pacific"
+        return self.country
+
+                
     def resetButtons(self,btns):
         for index,btn in enumerate(btns):
             if index == 0:
@@ -148,6 +226,7 @@ class MainWindow(QMainWindow):
                                                     background-color:#0b6d63  ;
                                                     }
                                                     """)
+                self.country = self.sender().objectName()
             else:
                 child.setStyleSheet("""QPushButton{
                                                     border:1px solid white;
@@ -165,6 +244,7 @@ class MainWindow(QMainWindow):
                                                     background-color:#0b6d63  ;
                                                     }
                                                     """)
+                self.season = self.sender().objectName()
             else:
                 child.setStyleSheet("""QPushButton{
                                                     border:1px solid white;
@@ -174,7 +254,7 @@ class MainWindow(QMainWindow):
                                                     background-color:#010f0e ;
                                                     }""")    
             
-    def addPanelProducts(self, row):
+    def addPanelProducts(self, row,framelength):
         global counterlength
         counterlength += 1
         
@@ -282,7 +362,7 @@ class MainWindow(QMainWindow):
         
         self.ui.results.addWidget(frame)
         
-        if counterlength == lengthFrame:
+        if counterlength == framelength:
             self.ui.results.addStretch()
             counterlength = 0
             
@@ -325,7 +405,7 @@ class MainWindow(QMainWindow):
         # TIMER IN MILLISECONDS
         #self.timer.start(15)
 
-    def addPanelCategories(self, row):
+    def addPanelCategories(self, row,framelength):
         global counterlength
         counterlength += 1
         
@@ -393,7 +473,7 @@ class MainWindow(QMainWindow):
         
         self.ui.results.addWidget(frame)
         
-        if counterlength == lengthFrame:
+        if counterlength == framelength:
             self.ui.results.addStretch()
             counterlength = 0
             
@@ -562,7 +642,7 @@ if __name__ == '__main__':
     country = "All"
     saison = "All"
     allowItemsets = True
-    minSupport= 0.03
+    minSupport= 0.025
     minConfidence = 0.5
     sortedBy = "confidence"
 
@@ -591,10 +671,10 @@ if __name__ == '__main__':
     
     if filter == "product":
         for index, row in dataFrame.iterrows():
-            mainWindow.addPanelProducts(row)
+            mainWindow.addPanelProducts(row,lengthFrame)
     elif filter == "category":
         for index, row in dataFrame.iterrows():
-            mainWindow.addPanelCategories(row)
+            mainWindow.addPanelCategories(row,lengthFrame)
 
 
         
