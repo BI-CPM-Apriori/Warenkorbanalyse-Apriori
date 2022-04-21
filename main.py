@@ -77,7 +77,7 @@ class MainWindow(QMainWindow):
         
         #Change View (Pages)
         self.ui.btnDashboard.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.dashboard))
-        self.ui.btnAnalyse.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.analyse))
+        #self.ui.btnAnalyse.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.analyse))
         
         #initialize Standort Buttons
         self.btnStandorte = [self.ui.btnAllCountries,self.ui.btnEurope,self.ui.btnPacific,self.ui.btnNorthAmerica]

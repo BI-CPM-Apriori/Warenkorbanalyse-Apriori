@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1515, 846)
+        MainWindow.resize(1535, 846)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -198,42 +198,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.btnToggle)
 
-        self.btnAnalyse = QToolButton(self.frame)
-        self.btnAnalyse.setObjectName(u"btnAnalyse")
-        sizePolicy.setHeightForWidth(self.btnAnalyse.sizePolicy().hasHeightForWidth())
-        self.btnAnalyse.setSizePolicy(sizePolicy)
-        self.btnAnalyse.setMinimumSize(QSize(70, 55))
-        self.btnAnalyse.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnAnalyse.setFocusPolicy(Qt.StrongFocus)
-        self.btnAnalyse.setStyleSheet(u"QToolButton{\n"
-"    color:rgb(255,255,255);\n"
-"    background-color: rgb(39, 39, 39);\n"
-"    border:0px solid;\n"
-"    font-size:9px;\n"
-"    font-style:futura;\n"
-"	padding:7px;\n"
-"}\n"
-"\n"
-"QToolButton:hover{\n"
-"background-color: rgb(17, 17, 17);\n"
-"\n"
-"}\n"
-"QToolButton:focus{\n"
-"\n"
-"	background-color: rgb(105, 105, 105);\n"
-"border-left: 3px solid #E1A100;\n"
-"\n"
-"}\n"
-"")
-        icon4 = QIcon()
-        icon4.addFile(u"images/Home.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnAnalyse.setIcon(icon4)
-        self.btnAnalyse.setIconSize(QSize(18, 18))
-        self.btnAnalyse.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.btnAnalyse.setAutoRaise(False)
-
-        self.verticalLayout_4.addWidget(self.btnAnalyse)
-
         self.btnDashboard = QToolButton(self.frame)
         self.btnDashboard.setObjectName(u"btnDashboard")
         sizePolicy.setHeightForWidth(self.btnDashboard.sizePolicy().hasHeightForWidth())
@@ -262,9 +226,9 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "")
-        icon5 = QIcon()
-        icon5.addFile(u"images/Analyse.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnDashboard.setIcon(icon5)
+        icon4 = QIcon()
+        icon4.addFile(u"images/Analyse.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnDashboard.setIcon(icon4)
         self.btnDashboard.setIconSize(QSize(18, 18))
         self.btnDashboard.setToolButtonStyle(Qt.ToolButtonIconOnly)
 
@@ -316,9 +280,9 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "")
-        icon6 = QIcon()
-        icon6.addFile(u"images/Einstellungen.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnSettings.setIcon(icon6)
+        icon5 = QIcon()
+        icon5.addFile(u"images/Einstellungen.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnSettings.setIcon(icon5)
         self.btnSettings.setIconSize(QSize(18, 18))
         self.btnSettings.setToolButtonStyle(Qt.ToolButtonIconOnly)
 
@@ -352,9 +316,9 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "")
-        icon7 = QIcon()
-        icon7.addFile(u"images/help-24.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnHelp.setIcon(icon7)
+        icon6 = QIcon()
+        icon6.addFile(u"images/help-24.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnHelp.setIcon(icon6)
 
         self.verticalLayout_3.addWidget(self.btnHelp)
 
@@ -617,9 +581,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon8 = QIcon()
-        icon8.addFile(u"images/Globe.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnAllCountries.setIcon(icon8)
+        icon7 = QIcon()
+        icon7.addFile(u"images/Globe.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnAllCountries.setIcon(icon7)
         self.btnAllCountries.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_7.addWidget(self.btnAllCountries)
@@ -644,9 +608,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon9 = QIcon()
-        icon9.addFile(u"images/North America.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnNorthAmerica.setIcon(icon9)
+        icon8 = QIcon()
+        icon8.addFile(u"images/North America.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnNorthAmerica.setIcon(icon8)
         self.btnNorthAmerica.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_7.addWidget(self.btnNorthAmerica)
@@ -670,9 +634,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon10 = QIcon()
-        icon10.addFile(u"images/Europe.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnEurope.setIcon(icon10)
+        icon9 = QIcon()
+        icon9.addFile(u"images/Europe.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnEurope.setIcon(icon9)
         self.btnEurope.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_7.addWidget(self.btnEurope)
@@ -696,9 +660,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon11 = QIcon()
-        icon11.addFile(u"images/Pacific.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnPacific.setIcon(icon11)
+        icon10 = QIcon()
+        icon10.addFile(u"images/Pacific.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnPacific.setIcon(icon10)
         self.btnPacific.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_7.addWidget(self.btnPacific)
@@ -757,9 +721,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon12 = QIcon()
-        icon12.addFile(u"images/Jahreszeiten.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnJahreszeitenAll.setIcon(icon12)
+        icon11 = QIcon()
+        icon11.addFile(u"images/Jahreszeiten.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnJahreszeitenAll.setIcon(icon11)
         self.btnJahreszeitenAll.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_5.addWidget(self.btnJahreszeitenAll)
@@ -781,9 +745,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon13 = QIcon()
-        icon13.addFile(u"images/Astrology-Spring-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnFruehling.setIcon(icon13)
+        icon12 = QIcon()
+        icon12.addFile(u"images/Astrology-Spring-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnFruehling.setIcon(icon12)
         self.btnFruehling.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_5.addWidget(self.btnFruehling)
@@ -806,9 +770,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon14 = QIcon()
-        icon14.addFile(u"images/Astrology-Summer-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnSommer.setIcon(icon14)
+        icon13 = QIcon()
+        icon13.addFile(u"images/Astrology-Summer-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnSommer.setIcon(icon13)
         self.btnSommer.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_5.addWidget(self.btnSommer)
@@ -830,9 +794,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon15 = QIcon()
-        icon15.addFile(u"images/Astrology-Autumn-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnHerbst.setIcon(icon15)
+        icon14 = QIcon()
+        icon14.addFile(u"images/Astrology-Autumn-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnHerbst.setIcon(icon14)
         self.btnHerbst.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_5.addWidget(self.btnHerbst)
@@ -855,9 +819,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon16 = QIcon()
-        icon16.addFile(u"images/Astrology-Winter-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnWinter.setIcon(icon16)
+        icon15 = QIcon()
+        icon15.addFile(u"images/Astrology-Winter-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnWinter.setIcon(icon15)
         self.btnWinter.setIconSize(QSize(55, 55))
 
         self.horizontalLayout_5.addWidget(self.btnWinter)
@@ -960,9 +924,9 @@ class Ui_MainWindow(object):
 "QPushButton:hover{\n"
 "background-color: rgb(0, 100, 0);\n"
 "}")
-        icon17 = QIcon()
-        icon17.addFile(u"images/haken.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btnAccept.setIcon(icon17)
+        icon16 = QIcon()
+        icon16.addFile(u"images/haken.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnAccept.setIcon(icon16)
 
         self.horizontalLayout_12.addWidget(self.btnAccept)
 
@@ -1002,7 +966,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1399, 635))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1419, 635))
         sizePolicy.setHeightForWidth(self.scrollAreaWidgetContents.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContents.setSizePolicy(sizePolicy)
         self.verticalLayout_12 = QVBoxLayout(self.scrollAreaWidgetContents)
@@ -1066,18 +1030,17 @@ class Ui_MainWindow(object):
         self.maximizeButton.setText("")
         self.exitButton.setText("")
         self.btnToggle.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.btnAnalyse.setText("")
         self.btnDashboard.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.btnSettings.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.btnHelp.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Analyse", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
         self.rbProducts.setText(QCoreApplication.translate("MainWindow", u"Products", None))
         self.rbCategory.setText(QCoreApplication.translate("MainWindow", u"Category", None))
         self.checkBoxItems.setText(QCoreApplication.translate("MainWindow", u"Show Itemsets", None))
         self.label_4.setText("")
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"min Support", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"min Confidence", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Standort", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Locations", None))
 #if QT_CONFIG(tooltip)
         self.btnAllCountries.setToolTip(QCoreApplication.translate("MainWindow", u"All Locations", None))
 #endif // QT_CONFIG(tooltip)
@@ -1094,7 +1057,7 @@ class Ui_MainWindow(object):
         self.btnPacific.setToolTip(QCoreApplication.translate("MainWindow", u"Pacific", None))
 #endif // QT_CONFIG(tooltip)
         self.btnPacific.setText("")
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Saison", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Season", None))
 #if QT_CONFIG(tooltip)
         self.btnJahreszeitenAll.setToolTip(QCoreApplication.translate("MainWindow", u"All Seasons", None))
 #endif // QT_CONFIG(tooltip)
@@ -1115,11 +1078,11 @@ class Ui_MainWindow(object):
         self.btnWinter.setToolTip(QCoreApplication.translate("MainWindow", u"Winter", None))
 #endif // QT_CONFIG(tooltip)
         self.btnWinter.setText("")
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Sortierung", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Sorting", None))
         self.btnReset.setText("")
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Filter zur\u00fccksetzen", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"reset Filters", None))
         self.btnAccept.setText("")
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Filter best\u00e4tigen", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"confirm Filters", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Analyse", None))
     # retranslateUi
 
