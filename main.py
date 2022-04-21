@@ -560,13 +560,13 @@ class Ergebnissframe1zu1(QWidget):
 
 if __name__ == '__main__':
 
-    filter = "category"
+    filter = "product"
     country = "All"
     saison = "All"
-    allowItemsets = False
-    minSupport= 0.025
+    allowItemsets = True
+    minSupport= 0.03
     minConfidence = 0.5
-    sortedBy = "lift"
+    sortedBy = "confidence"
 
 
     ds = dataset.createDataset(filter, country, saison)
