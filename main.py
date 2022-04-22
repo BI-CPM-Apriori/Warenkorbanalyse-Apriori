@@ -764,20 +764,6 @@ if __name__ == '__main__':
 
 
     ds = dataset.createDataset(filter, country, saison)
-
-    #if filter == "product":
-    #    with open('Apriori/filterProducts.json','r') as file:
-    #        obj = json.load(file)
-    #elif filter == "category":
-    #    with open('Apriori/filterCategories.json','r') as file:
-    #        obj = json.load(file)
-
-    #for i in obj['filters']:
-    #    if i["countryName"] == country and i['saison'] == saison:
-    #        minSupport = i['params'][0]['support']
-    #        minConfidence = i['params'][0]['threshold']
-
-    
     dataFrame = apriori.getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets)
     lengthFrame = int(dataFrame.index.size)
     
