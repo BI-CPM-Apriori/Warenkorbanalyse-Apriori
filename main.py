@@ -65,9 +65,9 @@ class MainWindow(QMainWindow):
         
         #initialize SpinBox
         self.ui.spinBoxConfidence.setSuffix("%")
-        self.ui.spinBoxConfidence.setValue(75)
+        self.ui.spinBoxConfidence.setValue(65)
         self.ui.spinBoxSupport.setSuffix("%")
-        self.ui.spinBoxSupport.setValue(5)
+        self.ui.spinBoxSupport.setValue(3)
         
         #initialize combobox
         comboOptions = ["Confidence", "Support","Lift","Conviction"]
@@ -113,8 +113,8 @@ class MainWindow(QMainWindow):
         self.ui.checkBoxItems.setChecked(True)
         
         #initialize SpinBox
-        self.ui.spinBoxConfidence.setValue(75)
-        self.ui.spinBoxSupport.setValue(5)
+        self.ui.spinBoxConfidence.setValue(65)
+        self.ui.spinBoxSupport.setValue(3)
         
         #preset radioButton
         self.ui.rbProducts.setChecked(True)
@@ -758,8 +758,8 @@ if __name__ == '__main__':
     country = "All"
     saison = "All"
     allowItemsets = True
-    minSupport= 0.05
-    minConfidence = 0.75
+    minSupport= 0.03
+    minConfidence = 0.65
     sortedBy = "confidence"
 
 
