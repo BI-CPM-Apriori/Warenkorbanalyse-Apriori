@@ -155,6 +155,9 @@ class MainWindow(QMainWindow):
         elif filter == "category":
             for index, row in dataFrame.iterrows():
                 self.addPanelCategories(row,lengthFrame)
+        elif filter == "subcategory":
+            for index, row in dataFrame.iterrows():
+                self.addPanelSubcategories(row,lengthFrame)
 
         
     def getSortedBy(self):
@@ -172,8 +175,10 @@ class MainWindow(QMainWindow):
     def getFilter(self):
         if self.ui.rbCategory.isChecked():
             return "category"
-        else:
+        elif self.ui.rbProducts.isChecked():
             return "product"
+        else:
+            return "subcategory"
         
     def getSeason(self):
         self.btnJahreszeiten = [self.ui.btnJahreszeitenAll,self.ui.btnSommer,self.ui.btnFruehling,self.ui.btnHerbst,self.ui.btnWinter]
@@ -515,6 +520,117 @@ class MainWindow(QMainWindow):
         #self.timer.timeout.connect(lambda: self.progress(frame,confidence))
         # TIMER IN MILLISECONDS
         #self.timer.start(15) 
+
+    def addPanelSubcategories(self, row,framelength):
+        global counterlength
+        counterlength += 1
+        
+        conn = dbConnection.openConn()
+        cursor = conn.cursor()
+        
+        if (len(list(row['antecedents'])) == 2 and len(list(row['consequents'])) == 1):
+            
+            frame = Ergebnissframe(self)
+
+            pixmap = QPixmap(read.getSubcategoryPhoto(list(row['antecedents'])[0]))
+            frame.ui.photo.setPixmap(pixmap)       
+            
+            pixmap1 = QPixmap(read.getSubcategoryPhoto(list(row['antecedents'])[1]))
+            frame.ui.photo2.setPixmap(pixmap1)   
+            
+            pixmap2 = QPixmap(read.getSubcategoryPhoto(list(row['consequents'])[0]))
+            frame.ui.photo3.setPixmap(pixmap2)
+            
+            frame.ui.produkt1.setText(str(cursor.execute(read.getSubcategoryName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getSubcategoryName(list(row['antecedents'])[1])).fetchone()[0]))
+            frame.ui.produkt3.setText(str(cursor.execute(read.getSubcategoryName(list(row['consequents'])[0])).fetchone()[0]))
+              
+        elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 2):
+            frame = Ergebnissframe1zu2(self)
+            
+            pixmap = QPixmap(read.getSubcategoryPhoto(list(row['antecedents'])[0]))
+            frame.ui.photo.setPixmap(pixmap)       
+            
+            pixmap1 = QPixmap(read.getSubcategoryPhoto(list(row['consequents'])[0]))
+            frame.ui.photo2.setPixmap(pixmap1)   
+            
+            pixmap2 = QPixmap(read.getSubcategoryPhoto(list(row['consequents'])[1]))
+            frame.ui.photo3.setPixmap(pixmap2)
+            
+            frame.ui.produkt1.setText(str(cursor.execute(read.getSubcategoryName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getSubcategoryName(list(row['consequents'])[0])).fetchone()[0]))
+            frame.ui.produkt3.setText(str(cursor.execute(read.getSubcategoryName(list(row['consequents'])[1])).fetchone()[0]))
+            
+        elif (len(list(row['antecedents'])) == 1 and len(list(row['consequents'])) == 1):
+            frame = Ergebnissframe1zu1(self)
+            
+            pixmap = QPixmap(read.getSubcategoryPhoto(list(row['antecedents'])[0]))
+            frame.ui.photo.setPixmap(pixmap)       
+            
+            pixmap1 = QPixmap(read.getSubcategoryPhoto(list(row['consequents'])[0]))
+            frame.ui.photo2.setPixmap(pixmap1)   
+            
+            
+            frame.ui.produkt1.setText(str(cursor.execute(read.getSubcategoryName(list(row['antecedents'])[0])).fetchone()[0]))
+            frame.ui.produkt2.setText(str(cursor.execute(read.getSubcategoryName(list(row['consequents'])[0])).fetchone()[0]))
+            
+        confidence = round(int((row['confidence']) * 100 ),0)
+       
+        frame.ui.labelSupport.setText(str(round(float((row['support']) * 100 ),2))+ "%")
+        frame.ui.labelLift.setText(str(round((row['lift'] ),2)))
+        frame.ui.labelConf.setText(str(round((row['conviction'] ),2)))
+        
+        shadow = QGraphicsDropShadowEffect(self)
+        shadow.setBlurRadius(20)
+        shadow.setXOffset(0)
+        shadow.setYOffset(0)
+        shadow.setColor(QColor(0, 0, 0, 60))
+        frame.setGraphicsEffect(shadow)
+        
+        self.ui.results.addWidget(frame)
+        
+        if counterlength == framelength:
+            self.ui.results.addStretch()
+            counterlength = 0
+            
+        
+        frame.clicked.connect(lambda: UIFunctions.toggleErgebnisse(frame,70,270,True))
+        
+        htmlText = """<p><span style=" font-size:25pt;">{VALUE}</span><span style=" font-size:22pt; vertical-align:center;">%</span></p>"""
+
+        # REPLACE VALUE
+        newHtml = htmlText.replace("{VALUE}", str(confidence))
+
+        frame.ui.labelConfidence.setText(newHtml)
+                
+        # PROGRESSBAR STYLESHEET BASE
+        styleSheet = """
+        QFrame{
+        	border-radius: 70px;
+            background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{STOP_1} rgba(255, 255, 255, 0), stop:{STOP_2} rgba(13, 72, 72, 255));
+        }
+        """
+
+        # GET PROGRESS BAR VALUE, CONVERT TO FLOAT AND INVERT VALUES
+        # stop works of 1.000 to 0.000
+        progress = (100 - confidence) / 100.0
+
+        # GET NEW VALUES
+        stop_1 = str(progress - 0.001)
+        stop_2 = str(progress)
+
+        # SET VALUES TO NEW STYLESHEET
+        newStylesheet = styleSheet.replace("{STOP_1}", stop_1).replace("{STOP_2}", stop_2)
+      
+
+        # APPLY STYLESHEET WITH NEW VALUES
+        frame.ui.progressKreis.setStyleSheet(newStylesheet)
+        
+         ## QTIMER ==> START
+        #self.timer = QtCore.QTimer()
+        #self.timer.timeout.connect(lambda: self.progress(frame,confidence))
+        # TIMER IN MILLISECONDS
+        #self.timer.start(15) 
         
     def progress (self,frame,confidence):
         global counter
@@ -642,8 +758,8 @@ if __name__ == '__main__':
     country = "All"
     saison = "All"
     allowItemsets = True
-    minSupport= 0.025
-    minConfidence = 0.5
+    minSupport= 0.05
+    minConfidence = 0.75
     sortedBy = "confidence"
 
 
@@ -675,6 +791,9 @@ if __name__ == '__main__':
     elif filter == "category":
         for index, row in dataFrame.iterrows():
             mainWindow.addPanelCategories(row,lengthFrame)
+    else:
+        for index, row in dataFrame.iterrows():
+            mainWindow.addPanelSubcategories(row,lengthFrame)
 
 
         

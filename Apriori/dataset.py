@@ -15,6 +15,15 @@ def createDataset(filter, country, saison):
             sql = read.getProductsByCountry(country)
         else:
             sql = read.getProductsByCountryAndSaison(country, saison)
+    elif filter == "subcategory":
+        if country == "All" and saison == "All":
+            sql = read.getSubcategoriesAll()
+        elif country == "All":
+            sql = read.getSubcategoriesBySaison(saison)
+        elif saison == "All":
+            sql = read.getSubcategoriesByCountry(country)
+        else:
+            sql = read.getSubcategoriesByCountryAndSaison(country, saison)
     else:
         if country == "All" and saison == "All":
             sql = read.getCategoriesAll()

@@ -603,7 +603,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon7 = QIcon()
-        icon7.addFile(u"images/Globe.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(u"images/locations/Globe.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnAllCountries.setIcon(icon7)
         self.btnAllCountries.setIconSize(QSize(55, 55))
 
@@ -630,7 +630,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon8 = QIcon()
-        icon8.addFile(u"images/North America.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon8.addFile(u"images/locations/North America.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnNorthAmerica.setIcon(icon8)
         self.btnNorthAmerica.setIconSize(QSize(55, 55))
 
@@ -656,7 +656,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon9 = QIcon()
-        icon9.addFile(u"images/Europe.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(u"images/locations/Europe.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnEurope.setIcon(icon9)
         self.btnEurope.setIconSize(QSize(55, 55))
 
@@ -682,7 +682,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon10 = QIcon()
-        icon10.addFile(u"images/Pacific.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(u"images/locations/Pacific.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnPacific.setIcon(icon10)
         self.btnPacific.setIconSize(QSize(55, 55))
 
@@ -743,7 +743,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon11 = QIcon()
-        icon11.addFile(u"images/Jahreszeiten.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon11.addFile(u"images/seasons/Jahreszeiten.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnJahreszeitenAll.setIcon(icon11)
         self.btnJahreszeitenAll.setIconSize(QSize(55, 55))
 
@@ -767,7 +767,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon12 = QIcon()
-        icon12.addFile(u"images/Astrology-Spring-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon12.addFile(u"images/seasons/Astrology-Spring-icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnFruehling.setIcon(icon12)
         self.btnFruehling.setIconSize(QSize(55, 55))
 
@@ -792,7 +792,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon13 = QIcon()
-        icon13.addFile(u"images/Astrology-Summer-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon13.addFile(u"images/seasons/Astrology-Summer-icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnSommer.setIcon(icon13)
         self.btnSommer.setIconSize(QSize(55, 55))
 
@@ -816,7 +816,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon14 = QIcon()
-        icon14.addFile(u"images/Astrology-Autumn-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon14.addFile(u"images/seasons/Astrology-Autumn-icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnHerbst.setIcon(icon14)
         self.btnHerbst.setIconSize(QSize(55, 55))
 
@@ -841,7 +841,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon15 = QIcon()
-        icon15.addFile(u"images/Astrology-Winter-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon15.addFile(u"images/seasons/Astrology-Winter-icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btnWinter.setIcon(icon15)
         self.btnWinter.setIconSize(QSize(55, 55))
 
