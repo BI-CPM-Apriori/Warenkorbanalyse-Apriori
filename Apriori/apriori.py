@@ -12,9 +12,9 @@ def getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets):
     frequent_itemsets['length'] = frequent_itemsets['itemsets'].apply(lambda x: len(x))
 
     if allowItemsets == True:
-        frequent_itemsets = frequent_itemsets[(frequent_itemsets['length'] < 3)]
+        frequent_itemsets = frequent_itemsets[(frequent_itemsets['length'] < 4)]
     else:
-         frequent_itemsets = frequent_itemsets[(frequent_itemsets['length'] < 4)]
+         frequent_itemsets = frequent_itemsets[(frequent_itemsets['length'] < 3)]
 
     
 

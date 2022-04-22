@@ -167,7 +167,7 @@ class MainWindow(QMainWindow):
         return self.ui.spinBoxSupport.value()/100
     
     def getItemset(self):
-        return not self.ui.checkBoxItems.isChecked()
+        return self.ui.checkBoxItems.isChecked()
     
     def getFilter(self):
         if self.ui.rbCategory.isChecked():
