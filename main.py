@@ -764,6 +764,7 @@ if __name__ == '__main__':
 
 
     ds = dataset.createDataset(filter, country, saison)
+    print(ds)
 
     dataFrame = apriori.getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets)
     lengthFrame = int(dataFrame.index.size)

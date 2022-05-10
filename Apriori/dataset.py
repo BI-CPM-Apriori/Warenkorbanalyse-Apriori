@@ -49,6 +49,5 @@ def createDataset(filter, country, saison):
 
         lastID = row[0]
         row = cursor.fetchone()
-
     return dataset
     dbConnection.closeConn(conn)
