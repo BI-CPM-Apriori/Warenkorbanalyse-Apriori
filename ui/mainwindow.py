@@ -1079,7 +1079,7 @@ class Ui_MainWindow(object):
         self.btnPacific.setToolTip(QCoreApplication.translate("MainWindow", u"Pacific", None))
 #endif // QT_CONFIG(tooltip)
         self.btnPacific.setText("")
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Season", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Seasons", None))
 #if QT_CONFIG(tooltip)
         self.btnJahreszeitenAll.setToolTip(QCoreApplication.translate("MainWindow", u"All Seasons", None))
 #endif // QT_CONFIG(tooltip)
