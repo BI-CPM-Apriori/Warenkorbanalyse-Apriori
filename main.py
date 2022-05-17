@@ -70,7 +70,7 @@ class MainWindow(QMainWindow):
         self.ui.spinBoxSupport.setValue(3)
         
         #initialize combobox
-        comboOptions = ["Confidence", "Support","Lift","Conviction"]
+        comboOptions = ["Lift", "Support","Confidence","Conviction"]
         for option in comboOptions:
             self.ui.comboSortierung.addItem(option)
             self.ui.comboSortierung.setCurrentIndex(0)
@@ -490,11 +490,29 @@ class MainWindow(QMainWindow):
             frame.ui.produkt1.setText(str(cursor.execute(read.getCategoryName(list(row['antecedents'])[0])).fetchone()[0]))
             frame.ui.produkt2.setText(str(cursor.execute(read.getCategoryName(list(row['consequents'])[0])).fetchone()[0]))
             
+        support =  str(round(float((row['support']) * 100 ),2))+ "%"
         confidence = round(int((row['confidence']) * 100 ),0)
+        lift = str(round((row['lift'] ),2))
+        conviction = round((row['conviction'] ),2)
+
+        supportText = "<b>Support:</b> <b>" + support + "</b> of customers purchased antecedents and consequents.<br/>"
+        confidenceText= "<b>Confidence:</b> <b>" + str(confidence) + "%</b> of the customers that bought antecedents also bought consequents."
+        liftText = "<b>Lift:</b> Increased by a factor of <b>" + lift + "</b>, that someone will buy consequents if we know that they have bought antecedents.<br/> This is the conditional probability.<br/>"
+        
+        if conviction > 1:
+            convictionText = "<b>Conviction:</b> Conviction <b>"+ str(conviction) +"</b> means that antecedents and consequents are in a relationship."
+        else:
+            convictionText = "<b>Conviction:</b> Conviction <b>"+ str(conviction) +"</b> means that antecedents and consequents are not connected."
+
+        frame.ui.label.setText(supportText+confidenceText)
+        frame.ui.label.setStyleSheet("font-size:15px;")
+        frame.ui.label_2.setText(liftText+convictionText)
+        frame.ui.label_2.setStyleSheet("font-size:15px;")
+
+        frame.ui.labelSupport.setText(support)
+        frame.ui.labelLift.setText(lift)
+        frame.ui.labelConf.setText(str(conviction))
        
-        frame.ui.labelSupport.setText(str(round(float((row['support']) * 100 ),2))+ "%")
-        frame.ui.labelLift.setText(str(round((row['lift'] ),2)))
-        frame.ui.labelConf.setText(str(round((row['conviction'] ),2)))
         
         shadow = QGraphicsDropShadowEffect(self)
         shadow.setBlurRadius(20)
@@ -601,11 +619,28 @@ class MainWindow(QMainWindow):
             frame.ui.produkt1.setText(str(cursor.execute(read.getSubcategoryName(list(row['antecedents'])[0])).fetchone()[0]))
             frame.ui.produkt2.setText(str(cursor.execute(read.getSubcategoryName(list(row['consequents'])[0])).fetchone()[0]))
             
+        support =  str(round(float((row['support']) * 100 ),2))+ "%"
         confidence = round(int((row['confidence']) * 100 ),0)
-       
-        frame.ui.labelSupport.setText(str(round(float((row['support']) * 100 ),2))+ "%")
-        frame.ui.labelLift.setText(str(round((row['lift'] ),2)))
-        frame.ui.labelConf.setText(str(round((row['conviction'] ),2)))
+        lift = str(round((row['lift'] ),2))
+        conviction = round((row['conviction'] ),2)
+
+        supportText = "<b>Support:</b> <b>" + support + "</b> of customers purchased antecedents and consequents.<br/>"
+        confidenceText= "<b>Confidence:</b> <b>" + str(confidence) + "%</b> of the customers that bought antecedents also bought consequents."
+        liftText = "<b>Lift:</b> Increased by a factor of <b>" + lift + "</b>, that someone will buy consequents if we know that they have bought antecedents.<br/> This is the conditional probability.<br/>"
+        
+        if conviction > 1:
+            convictionText = "<b>Conviction:</b> Conviction <b>"+ str(conviction) +"</b> means that antecedents and consequents are in a relationship."
+        else:
+            convictionText = "<b>Conviction:</b> Conviction <b>"+ str(conviction) +"</b> means that antecedents and consequents are not connected."
+
+        frame.ui.label.setText(supportText+confidenceText)
+        frame.ui.label.setStyleSheet("font-size:15px;")
+        frame.ui.label_2.setText(liftText+convictionText)
+        frame.ui.label_2.setStyleSheet("font-size:15px;")
+
+        frame.ui.labelSupport.setText(support)
+        frame.ui.labelLift.setText(lift)
+        frame.ui.labelConf.setText(str(conviction))
         
         shadow = QGraphicsDropShadowEffect(self)
         shadow.setBlurRadius(20)
@@ -785,9 +820,9 @@ if __name__ == '__main__':
     country = "All"
     saison = "All"
     allowItemsets = True
-    minSupport= 0.03
+    minSupport= 0.025
     minConfidence = 0.65
-    sortedBy = "confidence"
+    sortedBy = "lift"
 
 
     ds = dataset.createDataset(filter, country, saison)
