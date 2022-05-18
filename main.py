@@ -67,7 +67,8 @@ class MainWindow(QMainWindow):
         self.ui.spinBoxConfidence.setSuffix("%")
         self.ui.spinBoxConfidence.setValue(65)
         self.ui.spinBoxSupport.setSuffix("%")
-        self.ui.spinBoxSupport.setValue(3)
+        self.ui.spinBoxSupport.setDecimals(1)
+        self.ui.spinBoxSupport.setValue(2.5)
         
         #initialize combobox
         comboOptions = ["Lift", "Support","Confidence","Conviction"]
@@ -114,7 +115,8 @@ class MainWindow(QMainWindow):
         
         #initialize SpinBox
         self.ui.spinBoxConfidence.setValue(65)
-        self.ui.spinBoxSupport.setValue(3)
+        self.ui.spinBoxSupport.setValue(2.5)
+        
         
         #preset radioButton
         self.ui.rbProducts.setChecked(True)
