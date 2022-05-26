@@ -818,25 +818,29 @@ class Ergebnissframe1zu1(QWidget):
 
 if __name__ == '__main__':
 
+    # setzen der Default-Filter
     filter = "product"
     country = "All"
     saison = "All"
     allowItemsets = True
-    minSupport= 0.025
+    minSupport= 0.0263
     minConfidence = 0.65
     sortedBy = "lift"
 
-
+    # Daten aus Datenbank abrufen
+    # Array aus ProductIDs erzeugen
     ds = dataset.createDataset(filter, country, saison)
-    #print(ds)
 
+    # Apriori-Algorithmus anwenden
     dataFrame = apriori.getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets)
     lengthFrame = int(dataFrame.index.size)
     
+    # User Interface starten
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
     mainWindow.show()
     
+    # Assoziationsregeln in User Interface abbilden
     if filter == "product":
         for index, row in dataFrame.iterrows():
             mainWindow.addPanelProducts(row,lengthFrame)
@@ -847,6 +851,4 @@ if __name__ == '__main__':
         for index, row in dataFrame.iterrows():
             mainWindow.addPanelSubcategories(row,lengthFrame)
 
-
-        
     sys.exit(app.exec_())

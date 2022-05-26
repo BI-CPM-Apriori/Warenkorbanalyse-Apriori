@@ -1,7 +1,7 @@
 import pyodbc
 
 def openConn():
-    server_name = 'LAPTOP-SRSAKK6H\SQLEXPRESS' 
+    server_name = 'NB-DK-DELL\SQLEXPRESS' 
     db_name = 'AdventureWorks2019' 
     connection_str =  'Driver={SQL Server};' + 'Server=' + server_name + ";Database=" + db_name + ";Trusted_Connection=yes;"
 

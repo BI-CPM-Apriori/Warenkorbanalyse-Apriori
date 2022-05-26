@@ -4,12 +4,14 @@ from numpy import signedinteger
 import pandas as pd
     
 def getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets):
+
+    # Binäre Transaktionstabelle erzeugen 
     te = TransactionEncoder()
     df = pd.DataFrame(te.fit_transform(ds), columns=te.columns_)
-    #print(df)
 
+    # Apriori-Algorithmus auf binäre Transaktionstabelle anwenden
     frequent_itemsets = apriori(df,min_support=minSupport,use_colnames=True)
-    #print(frequent_itemsets)
+
     frequent_itemsets['length'] = frequent_itemsets['itemsets'].apply(lambda x: len(x))
 
     if allowItemsets == True:
@@ -17,11 +19,14 @@ def getResult(ds, minSupport, minConfidence, sortedBy, allowItemsets):
     else:
          frequent_itemsets = frequent_itemsets[(frequent_itemsets['length'] < 3)]
 
+    # min. Confidence setzen
     rules = association_rules(frequent_itemsets,metric='confidence',min_threshold=minConfidence)
-    #print(rules)
+
+    # Spalten für Assoziationsregeln festlegen
     result = rules[['antecedents','consequents','support','confidence','lift','conviction']]
+
+    # Ergebnisse sortieren
     result.sort_values(by=[sortedBy], ascending=False, inplace=True)
 
-    #print(result)
 
     return result
