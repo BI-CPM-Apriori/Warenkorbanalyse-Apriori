@@ -3,6 +3,14 @@
 Die Anwendung setzt im Backend eine Warenkorbanalyse mit dem Apriori-Algorithmus auf Basis der Daten der MS AdventureWorks2019-Datenbank um.
 Im Frontend können unterschiedliche Parameter (Quartal, Region, minSupport, minConfidence) zur Analyse gesetzt werden und die Metrics der Ergebnis-Assoziationsregeln ausgewertet werden.
 
+- main.py:  
+
+            - bildet die Schnittstelle zwischen Frontend und Backend
+
+            - führt die Anwedung aus
+            
+            
+
 Zur Ordnerstruktur:
 - Apriori:  
 
