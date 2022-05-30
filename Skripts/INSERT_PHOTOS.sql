@@ -6,6 +6,7 @@ values ('13.04.2022 17:49:00',
         (SELECT * FROM OPENROWSET(BULK N'C:\ProductPhotos\helmet_black.gif', SINGLE_BLOB) as T1),
         'helmet_black.gif')
 
+
 INSERT INTO [Production].[ProductPhoto] 
 ([ModifiedDate],[ThumbNailPhoto],[ThumbnailPhotoFileName],[LargePhoto], [LargePhotoFileName])
 values ('13.04.2022 17:49:00', 
