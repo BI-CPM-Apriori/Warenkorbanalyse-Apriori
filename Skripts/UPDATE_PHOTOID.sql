@@ -6,6 +6,7 @@ UPDATE [Production].[ProductProductPhoto]
    SET [ProductPhotoID] = 183
  WHERE [Production].[ProductProductPhoto].[ProductID] = 711
 
+
 UPDATE [Production].[ProductProductPhoto]
    SET [ProductPhotoID] = 184
  WHERE [Production].[ProductProductPhoto].[ProductID] = 712
